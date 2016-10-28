@@ -1,0 +1,2483 @@
+24-Oct-2016 20:09:47 UTC,  Name: frank, 1
+
+24-Oct-2016 20:09:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 2
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch1 Manager  to 2(Employee ID)
+
+
+
+24-Oct-2016 20:09:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 2
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to 2(Employee ID)
+
+
+
+24-Oct-2016 20:09:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 2
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch3 Manager  to 2(Employee ID)
+
+
+
+24-Oct-2016 20:12:54 UTC,  Name: frank, 1
+
+24-Oct-2016 20:12:55 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 2
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch1 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 20:12:55 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch2 Manager  to 4(Employee ID)
+
+
+
+24-Oct-2016 20:12:55 UTC,  Name: frank, ---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:15:37 UTC,  Name: frank, 1
+
+24-Oct-2016 20:15:37 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch1 Manager  to 4(Employee ID)
+
+
+
+24-Oct-2016 20:15:37 UTC,  Name: frank, ---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:15:37 UTC,  Name: frank, ---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:17:03 UTC,  Name: frank, 1
+
+24-Oct-2016 20:17:04 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 20:17:04 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch2 Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 20:17:04 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch3 Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 20:20:27 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 4
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch1 Manager  to 5(Employee ID)
+
+
+
+24-Oct-2016 20:20:27 UTC,  Name: frank, ---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:20:27 UTC,  Name: frank, ---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:24:33 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 20:24:33 UTC,  Name: frank, ---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:24:33 UTC,  Name: frank, ---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:30:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 20:30:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 5
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch Manager  to 2(Employee ID)
+
+
+
+24-Oct-2016 20:30:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 4
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 20:34:24 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:34:24 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 2
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:34:24 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch Manager  to 6(Employee ID)
+
+
+
+24-Oct-2016 20:35:21 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:35:21 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:35:21 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch Manager  to 6(Employee ID)
+
+
+
+24-Oct-2016 20:36:08 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 20:36:08 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch Manager  to 6(Employee ID)
+
+
+
+24-Oct-2016 20:36:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:36:37 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch Manager  to 4(Employee ID)
+
+
+
+24-Oct-2016 20:36:37 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:36:37 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:38:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 4
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 20:38:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:38:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:41:23 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 20:41:23 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to 5(Employee ID)
+
+
+
+24-Oct-2016 20:41:23 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:43:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 20:43:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 5
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:43:09 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 20:43:55 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:43:55 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:43:55 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:47:48 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:47:48 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:47:48 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:49:14 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:49:14 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:49:14 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:50:42 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:50:42 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:50:42 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:50:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:50:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:50:47 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:51:30 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:51:30 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:51:30 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:58:39 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:58:39 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 20:58:39 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 21:01:31 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 21:01:31 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 21:01:31 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to (Employee ID)
+
+
+
+24-Oct-2016 21:04:45 UTC,  Name: frank, ---> Update: Branch0 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 21:04:45 UTC,  Name: frank, ---> Update: Branch0 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 21:04:45 UTC,  Name: frank, ---> Update: Branch0 Manager  to 6(Employee ID)
+
+
+
+24-Oct-2016 21:05:42 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 21:05:42 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to 3(Employee ID)
+
+
+
+24-Oct-2016 21:05:42 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to 6(Employee ID)
+
+
+
+24-Oct-2016 21:08:01 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 1(Employee ID)
+
+
+
+24-Oct-2016 21:08:01 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 3
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to 5(Employee ID)
+
+
+
+24-Oct-2016 21:08:01 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to 2(Employee ID)
+
+
+
+25-Oct-2016 13:23:58 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 2
+    [team_id] => 1
+    [start_time] => 08:00
+    [end_time] => 09:00
+    [wk_hours] => 
+    [ot_hours] => 0
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:26:49 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 40
+    [shop_id] => 1
+    [team_id] => 1
+    [employee_id] => 2
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 09:00:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:27:13 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 2
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:01
+    [wk_hours] => 
+    [ot_hours] => 0
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:28:53 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 3
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:01
+    [wk_hours] => 
+    [ot_hours] => 0.01
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:29:31 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 41
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:29:36 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 42
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.01
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:33:30 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 2
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:01
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 10.00,10.00,10.00
+)
+
+
+25-Oct-2016 13:36:58 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 2
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:01
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:37:27 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 44
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:37:31 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 43
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 10.00,10.00,10.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:43:23 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 4
+    [team_id] => 2
+    [start_time] => 09:00
+    [end_time] => 09:01
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 10.00
+    [sales] => 10.00,10.00,0.00
+)
+
+
+25-Oct-2016 13:43:50 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 3
+    [team_id] => 2
+    [start_time] => 10:00
+    [end_time] => 10:01
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:43:50 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 3
+    [team_id] => 2
+    [start_time] => 10:00
+    [end_time] => 10:01
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:49:04 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 3
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:01
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:49:36 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 45
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 4
+    [date] => 2016-10-25
+    [start_time] => 09:00:00
+    [end_time] => 09:01:00
+    [wk_hours] => 0.00
+    [turnover] => 10.00
+    [sales] => 10.00,10.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:49:41 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 46
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 2016-10-25
+    [start_time] => 10:00:00
+    [end_time] => 10:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:49:46 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 47
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 2016-10-25
+    [start_time] => 10:00:00
+    [end_time] => 10:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:49:50 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 48
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:01:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 13:50:16 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 4
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:02
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 13:53:14 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 3
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:00
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 14:04:00 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 49
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 4
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:02:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 14:11:51 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 2
+    [team_id] => 2
+    [start_time] => 11:01
+    [end_time] => 12:14
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 15:05:47 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 50
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 2016-10-25
+    [start_time] => 08:00:00
+    [end_time] => 08:00:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+25-Oct-2016 15:09:10 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-25
+    [employee_id] => 2
+    [team_id] => 2
+    [start_time] => 09:00
+    [end_time] => 10:03
+    [wk_hours] => 
+    [ot_hours] => 0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+)
+
+
+25-Oct-2016 21:51:40 UTC,  Name: frank, select * from wp_shop_bonus where  employee_id=6 AND  effective_date >= '2016-10-09' AND effective_date <= '2016-10-25'
+
+25-Oct-2016 21:53:16 UTC,  Name: frank, select * from wp_shop_bonus where  employee_id=6 AND  effective_date >= '2016-10-01' AND effective_date <= '2016-10-25'
+
+26-Oct-2016 20:27:46 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-26
+    [employee_id] => 5
+    [branch_id] => 2
+    [depart_id] => 1
+    [bonus_threshold] => 200
+    [bonus_threshold_rate] => 0.1
+)
+
+
+26-Oct-2016 20:36:08 UTC,  Name: frank, User ID: 1, Delete 
+
+
+
+26-Oct-2016 20:47:51 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 1
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 6(Employee ID)
+
+
+
+26-Oct-2016 20:47:51 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 5
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to 6(Employee ID)
+
+
+
+26-Oct-2016 20:47:51 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 2
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to 4(Employee ID)
+
+
+
+26-Oct-2016 21:14:39 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable product
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.20
+)
+---> Update: Product 2 sales rate  to 0.5
+
+
+
+26-Oct-2016 21:14:39 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucher
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.30
+)
+---> Update: Product 3 sales rate  to 0.5
+
+
+
+26-Oct-2016 21:14:39 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => package
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.40
+)
+---> Update: Product 4 sales rate  to 0.5
+
+
+
+26-Oct-2016 21:15:02 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable product
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.50
+)
+---> Update: Product 2 sales rate  to 0.2
+
+
+
+26-Oct-2016 21:15:02 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucher
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.50
+)
+---> Update: Product 3 sales rate  to 0.3
+
+
+
+26-Oct-2016 21:15:02 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => package
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.50
+)
+---> Update: Product 4 sales rate  to 0.4
+
+
+
+26-Oct-2016 21:29:34 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable product
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.20
+)
+---> Update: Product 2 sales rate  to 0.20
+
+
+
+26-Oct-2016 21:29:34 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucher
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.30
+)
+---> Update: Product 3 sales rate  to 0.30
+
+
+
+26-Oct-2016 21:29:34 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => package
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.40
+)
+---> Update: Product 4 sales rate  to 0.40
+
+
+
+26-Oct-2016 21:32:39 UTC,  Name: frank, stdClass Object
+(
+    [id] => 1
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Angle
+    [address_1] => 407 Wandsworth Rd
+    [address_2] => London
+    [city] => London
+    [state] => -1
+    [zip] => N12 8JY
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:38:37
+    [updated_at] => 2016-10-23 14:08:22
+)
+---> Update: Branch1 Manager  to 2(Employee ID)
+
+
+
+26-Oct-2016 21:32:39 UTC,  Name: frank, stdClass Object
+(
+    [id] => 2
+    [company_id] => 
+    [manager_id] => 6
+    [name] => Balham
+    [address_1] => 773 High Rd
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JP
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 22:55:08
+    [updated_at] => 2016-10-23 14:09:20
+)
+---> Update: Branch2 Manager  to 6(Employee ID)
+
+
+
+26-Oct-2016 21:32:39 UTC,  Name: frank, stdClass Object
+(
+    [id] => 3
+    [company_id] => 
+    [manager_id] => 4
+    [name] => Victoria
+    [address_1] => vic
+    [address_2] => 
+    [city] => London
+    [state] => -1
+    [zip] => SW8 2JK
+    [country] => GB
+    [fax] => 
+    [phone] => 
+    [created_at] => 2016-10-22 23:03:49
+    [updated_at] => 2016-10-23 14:09:44
+)
+---> Update: Branch3 Manager  to 4(Employee ID)
+
+
+
+27-Oct-2016 15:59:32 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable product
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.20
+)
+---> Update: Product 2 sales rate  to 0.21
+
+
+
+27-Oct-2016 15:59:32 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable product
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.20
+)
+---> Update: Product 2 name  to consumableproduct:0.2
+
+
+
+27-Oct-2016 15:59:32 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucher
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.30
+)
+---> Update: Product 3 sales rate  to 0.31
+
+
+
+27-Oct-2016 15:59:32 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucher
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.30
+)
+---> Update: Product 3 name  to voucherss:0.3
+
+
+
+27-Oct-2016 15:59:32 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => package
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.40
+)
+---> Update: Product 4 sales rate  to 0.41
+
+
+
+27-Oct-2016 15:59:32 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => package
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.40
+)
+---> Update: Product 4 name  to packagess:0.4
+
+
+
+27-Oct-2016 16:00:45 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumableproduct:0.2
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.21
+)
+---> Update: Product 2 sales rate  to 0.2
+
+
+
+27-Oct-2016 16:00:45 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumableproduct:0.2
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.21
+)
+---> Update: Product 2 name  to consumable produc
+
+
+
+27-Oct-2016 16:00:46 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucherss:0.3
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.31
+)
+---> Update: Product 3 sales rate  to 0.3
+
+
+
+27-Oct-2016 16:00:46 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => voucherss:0.3
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.31
+)
+---> Update: Product 3 name  to vouche
+
+
+
+27-Oct-2016 16:00:46 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => packagess:0.4
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.41
+)
+---> Update: Product 4 sales rate  to 0.4
+
+
+
+27-Oct-2016 16:00:46 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => packagess:0.4
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.41
+)
+---> Update: Product 4 name  to packag
+
+
+
+27-Oct-2016 16:01:55 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable produc
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.20
+)
+---> Update: Product 2 sales rate  to 0.20
+
+
+
+27-Oct-2016 16:01:55 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 2
+    [product_name] => consumable produc
+    [product_cost_band] => 2.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.20
+)
+---> Update: Product 2 name  to consumable product
+
+
+
+27-Oct-2016 16:01:55 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => vouche
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.30
+)
+---> Update: Product 3 sales rate  to 0.30
+
+
+
+27-Oct-2016 16:01:55 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 3
+    [product_name] => vouche
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.30
+)
+---> Update: Product 3 name  to voucher
+
+
+
+27-Oct-2016 16:01:55 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => packag
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.40
+)
+---> Update: Product 4 sales rate  to 0.40
+
+
+
+27-Oct-2016 16:01:55 UTC,  Name: frank, stdClass Object
+(
+    [product_id] => 4
+    [product_name] => packag
+    [product_cost_band] => 0.00
+    [product_band_rate] => 0.00
+    [product_sale_rate] => 0.40
+)
+---> Update: Product 4 name  to package
+
+
+
+27-Oct-2016 21:33:46 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-27
+    [shop_id] => 1
+    [cash] => 6
+    [card] => 6
+    [online] => 6
+    [prepaid] => 6
+    [refund] => 7
+    [total] => 11.00
+    [till_start] => 2016-10-27
+    [till_end] => 1
+    [expense] => 6
+    [wage] => 6
+    [cash_offset] => 6
+    [cash_in] => 6
+)
+
+
+27-Oct-2016 21:38:32 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-27
+    [shop_id] => 1
+    [cash] => 3
+    [card] => 3
+    [online] => 3
+    [prepaid] => 3
+    [refund] => 3
+    [total] => 6.00
+    [till_start] => 2016-10-27
+    [till_end] => 1
+    [expense] => 3
+    [wage] => 3
+    [cash_offset] => 3
+    [cash_in] => 3
+)
+
+
+27-Oct-2016 21:45:29 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-27
+    [shop_id] => 1
+    [cash] => 5
+    [card] => 5
+    [online] => 6
+    [prepaid] => 5
+    [refund] => 3
+    [total] => 13.00
+    [till_start] => 6
+    [till_end] => 5
+    [expense] => 6
+    [wage] => 5
+    [cash_offset] => 1
+    [cash_in] => 1.00
+)
+
+
+27-Oct-2016 21:57:42 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-27
+    [shop_id] => 1
+    [cash] => 0.03
+    [card] => 0.06
+    [online] => 0.02
+    [prepaid] => 0.03
+    [refund] => 0.02
+    [total] => 0.09
+    [till_start] => 0.01
+    [till_end] => 0.01
+    [expense] => 0.01
+    [wage] => 0.01
+    [cash_offset] => 0.01
+    [cash_in] => 0.03
+)
+
+
+27-Oct-2016 22:09:23 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-27
+    [shop_id] => 1
+    [cash] => 4
+    [card] => 4
+    [online] => 4
+    [prepaid] => 4
+    [refund] => 4
+    [total] => 8.00
+    [till_start] => 4
+    [till_end] => 4
+    [expense] => 4
+    [wage] => 4.0
+    [cash_offset] => 4.0
+    [cash_in] => 4.00
+)
+
+
+27-Oct-2016 22:20:06 UTC,  Name: frank, User ID: 1, Delete 
+
+
+
+27-Oct-2016 22:21:37 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 13
+    [shop_id] => 1
+    [date] => 2016-10-27
+    [cash] => 3.00
+    [card] => 3.00
+    [online] => 3.00
+    [prepaid] => 3.00
+    [refund] => 3.00
+    [total] => 6.00
+    [till_start] => 2016.00
+    [till_end] => 1.00
+    [expense] => 3.00
+    [wage] => 3.00
+    [cash_offset] => 3.00
+    [cash_in] => 3.00
+)
+
+
+
+
+27-Oct-2016 22:21:50 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 15
+    [shop_id] => 1
+    [date] => 2016-10-27
+    [cash] => 0.00
+    [card] => 0.00
+    [online] => 0.00
+    [prepaid] => 0.00
+    [refund] => 0.00
+    [total] => 0.00
+    [till_start] => 0.01
+    [till_end] => 0.00
+    [expense] => 0.00
+    [wage] => 0.00
+    [cash_offset] => 0.00
+    [cash_in] => 0.00
+)
+
+
+
+
+27-Oct-2016 22:32:28 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-27
+    [shop_id] => 1
+    [cash] => 5
+    [card] => 5
+    [online] => 5
+    [prepaid] => 5
+    [refund] => 5
+    [total] => 10.00
+    [till_start] => 5
+    [till_end] => 5
+    [expense] => 5
+    [wage] => 6
+    [cash_offset] => 6
+    [cash_in] => 6.00
+)
+
+

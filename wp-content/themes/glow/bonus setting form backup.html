@@ -1,0 +1,63 @@
+<form id="bonus_form" action=""> 
+		<fieldset>
+		<div class="row">
+			<div class="col-sm-2">
+				<label for="bonus_employeeID">Employee Name </label>
+				<select class="form-control" id="bonus_employeeID" name="bonus_employeeID"  required>
+				    <?php $mgr = ($wpdb->get_results("SELECT id,display_name FROM wp_users " )); ?>
+					<?php foreach ( $mgr as $v ) : if($v->id==1) continue;?>
+						<option value="<?php echo $v->id; ?>"> <?php echo $v->display_name?></option>	
+					<?php endforeach; ?>					 
+				</select>	 
+			</div>
+		</div>
+		<div class="row">
+			<hr/>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<label>Employee Name</label>
+			</div> 
+			<div class="col-sm-2">
+				<label>Date</label>
+			</div>
+			<div class="col-sm-2">
+				<label>Branch</label>
+			</div> 
+			<div class="col-sm-2">
+				<label>Department</label>
+			</div> 
+			 
+			<div class="col-sm-2">
+				<label>Threshold</label>				 		 
+			</div>
+			<div class="col-sm-2">
+				<label>Threshold Rate</label>
+			</div>		 
+		</div>
+		<?php $bonus = $wpdb->get_results("SELECT * FROM wp_shop_bonus") ;  ?>
+		<?php foreach ($bonus as $b) : ?>
+		<div class="row">			
+			<div class="col-sm-2">
+				<label><?php echo $b->employee_id;?></label>				
+			</div> 
+			<div class="col-sm-2">
+				<label><?php echo $b->effective_date;?></label>				
+			</div>
+			<div class="col-sm-2">
+				<label><?php echo $b->branch_id;?></label>
+			</div> 
+			<div class="col-sm-2">
+				<label><?php echo $b->depart_id;?></label>
+			</div> 
+			 
+			<div class="col-sm-2">
+				<label><?php echo $b->bonus_threshold;?></label>				 		 
+			</div>
+			<div class="col-sm-2">
+				<label><?php echo $b->bonus_threshold_rate;?></label>
+			</div>		 
+		</div>
+		<?php endforeach; ?>
+		</fieldset>
+		</form>
