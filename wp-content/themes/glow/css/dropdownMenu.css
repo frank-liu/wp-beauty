@@ -71,11 +71,11 @@
     background: rgba(238,238,238,0.48);
 }
 
-/*select all classes end with empID*/
+ 
 
 label {    
     font-weight: 400;
-    font-size: 14px;
+    /*font-size: 14px;*/
 }
 
 /*current user photo*/

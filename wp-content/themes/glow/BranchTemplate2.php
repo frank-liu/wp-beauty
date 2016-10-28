@@ -357,107 +357,149 @@ global $wpdb, $wp;
 	 
     <!--Tab 1 dialog-->  
 	<div id="dialog-form" title="Records">
-		  <form id="order_input_form" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertDailyRecord.php" method="post">
+		  <form id="order_input_form" onsubmit="dialyrecord_submit.disabled = true; return true;" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertDailyRecord.php" method="post">
 			<fieldset>
-					 
 					<div class="row">
-						<div class="col-sm-2">
-							<label for="shop_name">Branch</label>
-							<select class="form-control" id="shop_name" name="shop_name" required>								
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-sm-12">
+									<label for="emp_name">Employee</label>
+									<select class="form-control" id="emp_name" name="emp_name"  onclick="get_profile_rec(this.value)" required>
+										<?php $gr = ($wpdb->get_results("SELECT id,display_name FROM wp_users ")); ?>
+										<?php foreach ( $gr as $val ) : if($val->id==1) continue;?>
+											<option value="<?php echo $val->id?>"><?php echo $val->display_name?></option>
+										<?php endforeach; ?>
+									</select>
+								</div>
+								 
+							</div>
+							<div class="row">
+								<div class="col-sm-4" id="profile_rec"><!--员工照片  -->	
+								</div>
 								
-								<option value="<?php echo $shop->id?>"><?php echo $shop->name?></option>
-																 
-							</select>
-							
+								<div class="col-sm-8">
+									<!--员工ID-->
+									<div>
+									<label id="empID_rec" class="margin-top: 0.5em;">Empolyee ID:					
+									</label>					
+									</div> 
+									<label for="shop_name">Branch</label>
+									<select class="form-control" id="shop_name" name="shop_name" required>								
+										
+										<option value="<?php echo $shop->id?>"><?php echo $shop->name?></option>
+																		 
+									</select>
+									
+									<label for="dep_name">Department</label>
+									<select class="form-control" id="depart_name_rec" name="dep_name" required>
+										
+										<?php $gr = ($wpdb->get_results("SELECT id,title FROM wp_erp_hr_depts ")); ?>
+										<?php foreach ( $gr as $val ) : ?>
+											<option value="<?php echo $val->id?>"><?php echo $val->title?></option>
+										<?php endforeach; ?>								 
+									</select>
+								</div>
+								 
+							</div>
 						</div>
+						
 						<div class="col-sm-2">
-							<label for="date">Date</label>
-							<input type="date" class="form-control" style="font-size:12px;" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+							<div class="row">
+								<div class="col-sm-12">
+									<label for="date">Date</label>
+									<input type="date" class="form-control" style="font-size:12px;" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12" style="margin-top: 1.8em;">
+									<label for="start">Clock-In</label>						
+									<input type="time" name="start" min="08:00" max="23:00" class="form-control" id="start_addRec" required>
+									<label for="end">Clock-Out</label>
+									<input type="time" name="end" min="08:00" max="23:00" class="form-control" id="end_addRec"   required>
+								</div>
+							</div>
 						</div>
-						<div class="col-sm-2">
-							<label for="emp_name">Employee</label>
-							 <select class="form-control" id="emp_name" name="emp_name"  onclick="get_profile_rec(this.value)" required>
-								<?php $gr = ($wpdb->get_results("SELECT id,display_name FROM wp_users ")); ?>
-								<?php foreach ( $gr as $val ) : if($val->id==1) continue;?>
-									<option value="<?php echo $val->id?>"><?php echo $val->display_name?></option>
-								<?php endforeach; ?>
-							 </select>
-						</div>
-	
-						<div class="col-sm-2">
-							<label for="dep_name">Department</label>
-							 <select class="form-control" id="depart_name_rec" name="dep_name" required>
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="turnover">Turnover</label>			
+									
+								</div>
+								<div class="col-sm-4">
+									<label for="hours" >Service Hours</label> <!--massage时间-->
+								</div>
 								
-								<?php $gr = ($wpdb->get_results("SELECT id,title FROM wp_erp_hr_depts ")); ?>
-								<?php foreach ( $gr as $val ) : ?>
-									<option value="<?php echo $val->id?>"><?php echo $val->title?></option>
-								<?php endforeach; ?>								 
-							 </select>
+								<div class="col-sm-4">
+									<label for="ot_hours">OT Hours</label>			
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									 	
+									<input type="number" name="turnover" min="0" step='0.01' value='0.00' placeholder='0.00' class="form-control" id="turnover"  >
+								
+								</div>
+								<div class="col-sm-4">
+									 
+									<input type="number" name="hours"  placeholder='0.00' step="0.01" class="form-control" id="hours_tab1"  >
+								</div>
+								
+								<div class="col-sm-4">
+									 			
+									<input type="number" name="ot_hours" placeholder='0.00' step="0.01"  class="form-control" id="ot_hours"  >
+								
+								</div>
+							</div>
 						</div>
 						
-						<div class="col-sm-2">
-							<label for="start">Clock In</label>						
-							<input type="time" name="start" min="08:00" max="23:00" class="form-control" id="start" required>
-						</div>
-						<div class="col-sm-2">
-							<label for="end">ClockOut</label>
-							<input type="time" name="end" min="08:00" max="23:00" class="form-control" id="end" onmouseout="cal_wk_hrs()" required>
+						
+						<!--product_name--->
+						
+						<div class="col-sm-3">
+							<div class="row">
+								<div class="col-sm-8">
+									<label>Product Sold</label>   
+								</div>
+								<div class="col-sm-4">
+									<label>Product Sales</label>
+								</div>
+							</div>
+							<!-- 循环3次。-->
+							<?php $gr = ($wpdb->get_results("SELECT product_id, product_name FROM wp_shop_products ")); ?>
+							<?php foreach ( $gr as $val ) : if($val->product_name=="null") continue;?>
+								<div class="row" style="margin-top: 0.2em;">
+									<div class="col-sm-8">
+									
+									  <input name="product_<?php echo $val->product_id;?>" id="product_<?php echo $val->product_id;?>" type="text"  value="<?php echo $val->product_name;?>" class="form-control" readonly/>
+																						 
+									</div>
+									
+									<div class="col-sm-4">
+													
+										<input <?php echo 'id="product_sale_'. $val->product_id.'"';?>  type="number" <?php echo 'name="prd_sales_'. $val->product_id.'"';?> min="0" step='0.01' value='0.00' placeholder='0.00' class="form-control" id="sales1" >
+										
+									</div> 
+								</div> 
+							<?php endforeach; ?>
 						</div>
 						
-					</div> 
-					<div class="row">
-						<div class="col-sm-2" id="profile_rec">	<!--员工照片 no blank line here-->		
-						</div>
-						
-						<div class="col-sm-2">
-							<label for="hours" >Service Hours</label> <!--工作时间-->
-							<input type="number" name="hours"  placeholder='0.00' class="form-control" id="hours_tab1" required>
-						</div>
-						<div class="col-sm-2">
-							<label for="turnover" >Turnover</label>			
-							<input type="number" name="turnover" min="0" step='0.01' value='0.00' placeholder='0.00' class="form-control" id="turnover" required>
-						</div>
-						<div class="col-sm-2">
-							<label for="prd_sales">Product Sales</label>			
-							<input type="number" name="prd_sales" step="0.01" value='0.00' placeholder='0.00' class="form-control" id="prd_sales" required>
-						</div>
-						<div class="col-sm-2">
-							<label for="ot_hours">OT Hours</label>			
-							<input type="number" name="ot_hours" placeholder='0.00' class="form-control" id="ot_hours" required>
-						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-1">
 							<label for="paid">Paid</label>	<!--if be paid-->							 
 							<select class="form-control" id="paid" name="paid" required>							 
 								<option value="0">NO</option>
 								<option value="1">Yes</option>
 							 </select>
 						</div>
-						
-					</div> 
-					<div class="row">						
-						<div class="col-sm-2">
-							<label>Product Sold</label> <!-- 循环3次。-->
-							<?php $gr = ($wpdb->get_results("SELECT product_id, product_name FROM wp_shop_products ")); ?>
-							<?php foreach ( $gr as $val ) : if($val->product_name=="null") continue;?>
-							  <input name="product_<?php echo $val->product_id?>" id="product_<?php echo $val->product_id?>" type="text"  value="<?php echo $val->product_name?>" class="form-control" readonly/>
-							<?php endforeach; ?>
-						 						 
-						</div>
-						<div class="col-sm-5">
-							<label>Product Sales</label>			
-							<input id="product_sale_2"  type="number" name="prd_sales_2" min="0" step='0.01' value='0.00' placeholder='0.00' class="form-control" id="sales1" >
-							<input id="product_sale_3" type="number" name="prd_sales_3" min="0" step='0.01' value='0.00' placeholder='0.00' class="form-control" id="sales2" >
-							<input id="product_sale_4" type="number" name="prd_sales_4" min="0" step='0.01' value='0.00' placeholder='0.00' class="form-control" id="sales3" >
-						</div>
-						
-						
-					</div><br /> 					 
+					</div>	
+					
+										 
 				
 					<button id="addOrder_btn"  type="submit" tabindex="-1" style="position:absolute; top:-1000px">Submit</button>
 					
 			</fieldset>	
 			    <!--单一提交按钮-->
-				<br/><input type="submit" class="btn btn-success btn-lg btn-block" onclick="return dailyRecordsValidation()">
+				<br/><input id="dialyrecord_submit" type="submit" class="btn btn-success btn-lg btn-block" onclick="return dailyRecordsValidation()">
 			
 		  </form>
 		 

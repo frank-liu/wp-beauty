@@ -19,11 +19,12 @@
 			'start_time' => $_POST['start'],
 			'end_time' => $_POST['end'],
 			'wk_hours' => $_POST['hours'],
+			'ot_hours' => $_POST['ot_hours'],
 			
 			//'hour_rate' => 7.1, //db field 要换成 turnover. done
 			'sales'=> $prd_sales, //用，分隔每个产品售出的价格。例如：10,20,5			
 			
-			'wage'=> $_POST['wages'], //ok由manager输入的
+			//'wage'=> $_POST['wages'], 
 			'if_paid'=> $_POST['paid'],//ok
 			'turnover'=> $_POST['turnover']	//db field  done		
 	);

@@ -182,3 +182,18 @@
 [27-Oct-2016 22:20:06 UTC] PHP Notice:  Undefined index: id in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\deleteData.php on line 15
 [27-Oct-2016 22:20:06 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1 for query select * from wp_shop_cashflow where id=
 [27-Oct-2016 22:20:06 UTC] PHP Notice:  wpdb::prepare was called <strong>incorrectly</strong>. The query argument of wpdb::prepare() must have a placeholder. Please see <a href="https://codex.wordpress.org/Debugging_in_WordPress">Debugging in WordPress</a> for more information. (This message was added in version 3.9.0.) in D:\xampp\htdocs\wp-beauty\wp-includes\functions.php on line 3996
+[28-Oct-2016 19:49:21 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 25
+[28-Oct-2016 19:49:21 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 26
+[28-Oct-2016 19:49:21 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 27
+[28-Oct-2016 19:49:23 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 25
+[28-Oct-2016 19:49:23 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 26
+[28-Oct-2016 19:49:23 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 27
+[28-Oct-2016 20:27:34 UTC] PHP Notice:  Undefined index: shop_name in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertDailyRecord.php on line 15
+[28-Oct-2016 20:27:34 UTC] PHP Notice:  Undefined index: date in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertDailyRecord.php on line 18
+[28-Oct-2016 20:27:34 UTC] PHP Notice:  Undefined index: wages in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertDailyRecord.php on line 26
+[28-Oct-2016 20:27:34 UTC] WordPress database error Column 'shop_id' cannot be null for query INSERT INTO `wp_shop_daily_records` (`shop_id`, `team_id`, `employee_id`, `date`, `start_time`, `end_time`, `wk_hours`, `sales`, `wage`, `if_paid`, `turnover`) VALUES (NULL, '2', '2', NULL, '08:00', '09:00', '0.02', '0.00,0.00,0.00', NULL, '0', '0.00')
+[28-Oct-2016 20:44:29 UTC] PHP Notice:  Undefined index: date in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertDailyRecord.php on line 18
+[28-Oct-2016 20:44:29 UTC] PHP Notice:  Undefined index: wages in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertDailyRecord.php on line 27
+[28-Oct-2016 20:44:29 UTC] WordPress database error Column 'date' cannot be null for query INSERT INTO `wp_shop_daily_records` (`shop_id`, `team_id`, `employee_id`, `date`, `start_time`, `end_time`, `wk_hours`, `ot_hours`, `sales`, `wage`, `if_paid`, `turnover`) VALUES ('1', '2', '3', NULL, '08:00', '09:01', '0.02', '0.03', '0.00,0.00,0.00', NULL, '0', '0.00')
+[28-Oct-2016 20:45:45 UTC] PHP Notice:  Undefined index: date in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertDailyRecord.php on line 18
+[28-Oct-2016 20:45:45 UTC] WordPress database error Column 'date' cannot be null for query INSERT INTO `wp_shop_daily_records` (`shop_id`, `team_id`, `employee_id`, `date`, `start_time`, `end_time`, `wk_hours`, `ot_hours`, `sales`, `if_paid`, `turnover`) VALUES ('1', '2', '2', NULL, '09:00', '11:00', '0.01', '0.02', '0.00,0.00,0.00', '0', '0.00')

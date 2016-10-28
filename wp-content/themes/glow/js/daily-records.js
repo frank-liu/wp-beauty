@@ -31,8 +31,8 @@ var dialog2 = $("#dialog-form-cashflow").dialog({
 $(function () {
 	var dialog = $("#dialog-form").dialog({
 			autoOpen : false,
-			height : 550,
-			width : 900,
+			height : 300,
+			width : "95%",
 			modal : false,
             
 			close : function () {
@@ -78,30 +78,26 @@ function dailyRecordsValidation()
 	//大部分数据校验在前端input处已完成。现在只有一个地方需要校验：
 	//当推销金额sales=0，products sold 应该是0.如果sales！=0，products sold必须大于0，即有商品推销出去。
 	 
-	
+	/*
 	if($("#sales").val()==0 && $("#sold").val()!=0)
 	{
 		alert("因为售价为0.00，所以自动调整为No Product.");
 		$("#sold").val(1);
 		
 		return true;
-	}
-	if($("#start").val()=="" || $("#end").val()=="") //如果没有输入上班时间
-	{
-		alert("请输入工作时间!!!");
-		$("#start").css("border", "2px solid red");
-		$("#end").css("border", "2px solid red");
-		return false;
-	}
-	if($("#start").val()>=$("#end").val())
+	}*/
+	 
+	if($("#start_addRec").val()>=$("#end_addRec").val())
 	{
 		alert("开始工作时间要早于下班时间");
-		$("#start").css("border", "2px solid red");
-		$("#end").css("border", "2px solid red");
+		$("#start_addRec").css("border", "2px solid red");
+		$("#end_addRec").css("border", "2px solid red");
 		return false;
-	}else{
-		cal_hours_wage(); //计算工时工资
+	}else{;
+		//cal_hours_wage(); //计算工时工资
 	}
+	
+	/*
 	if($("#sales").val()>0 && $("#sold").val()<=0)
 	{
 			$("#sold").css("border", "2px solid red");
@@ -116,7 +112,7 @@ function dailyRecordsValidation()
 		//all validate
 		$("#sold").css("border", "1px solid grey");
 		return true;
-	}
+	}*/
 	return true;	
 	
 }
@@ -482,7 +478,7 @@ $(function () {
 			}
 			else
 			{
-				//location.reload(false);//刷新页面
+				location.reload(false);//刷新页面
 				return ("Canceled. Nothing happened.") ;
 			}			
 		},
@@ -1153,7 +1149,7 @@ function get_profile_rec(val)
 		
 		
 		$("#depart_name_rec").val(data.department);
-		//$(".empID").text('Empolyee ID: '+ data.user_id);
+		$("#empID_rec").text('Empolyee ID: #'+ data.user_id);
 		
 	})
 	.fail(function (data){
@@ -1443,7 +1439,7 @@ $().ready(function () {
 			}
 			else
 			{
-				//location.reload(false);//刷新页面
+				location.reload(false);//刷新页面
 				return ("Canceled. Nothing happened.") ;
 			}			
 		},

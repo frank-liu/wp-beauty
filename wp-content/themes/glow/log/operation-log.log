@@ -2481,3 +2481,142 @@
 )
 
 
+28-Oct-2016 20:27:34 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 
+    [start_time] => 08:00
+    [end_time] => 09:00
+    [wk_hours] => 0.02
+    [sales] => 0.00,0.00,0.00
+    [wage] => 
+    [if_paid] => 0
+    [turnover] => 0.00
+)
+
+
+28-Oct-2016 20:28:22 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 51
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 2016-10-25
+    [start_time] => 11:01:00
+    [end_time] => 12:14:00
+    [wk_hours] => 0.00
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.00
+    [if_paid] => 0
+)
+
+
+
+
+28-Oct-2016 20:44:29 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 
+    [start_time] => 08:00
+    [end_time] => 09:01
+    [wk_hours] => 0.02
+    [ot_hours] => 0.03
+    [sales] => 0.00,0.00,0.00
+    [wage] => 
+    [if_paid] => 0
+    [turnover] => 0.00
+)
+
+
+28-Oct-2016 20:45:45 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 
+    [start_time] => 09:00
+    [end_time] => 11:00
+    [wk_hours] => 0.01
+    [ot_hours] => 0.02
+    [sales] => 0.00,0.00,0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+)
+
+
+28-Oct-2016 20:48:16 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 4
+    [date] => 2016-10-28
+    [start_time] => 08:00
+    [end_time] => 09:01
+    [wk_hours] => 0.01
+    [ot_hours] => 0.01
+    [sales] => 0.00,0.00,0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+)
+
+
+28-Oct-2016 21:05:26 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 3
+    [date] => 2016-10-28
+    [start_time] => 08:00
+    [end_time] => 09:00
+    [wk_hours] => 
+    [ot_hours] => 
+    [sales] => 0.00,0.00,0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+)
+
+
+28-Oct-2016 21:14:26 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 2
+    [date] => 2016-10-28
+    [start_time] => 08:00
+    [end_time] => 08:05
+    [wk_hours] => 
+    [ot_hours] => 
+    [sales] => 0.00,0.00,0.00
+    [if_paid] => 0
+    [turnover] => 0.00
+)
+
+
+28-Oct-2016 21:14:44 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 53
+    [shop_id] => 1
+    [team_id] => 2
+    [employee_id] => 4
+    [date] => 2016-10-28
+    [start_time] => 08:00:00
+    [end_time] => 09:01:00
+    [wk_hours] => 0.01
+    [turnover] => 0.00
+    [sales] => 0.00,0.00,0.00
+    [product_id] => 
+    [wage] => 0.00
+    [ot_hours] => 0.01
+    [if_paid] => 0
+)
+
+
+
+
