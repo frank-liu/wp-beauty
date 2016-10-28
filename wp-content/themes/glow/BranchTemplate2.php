@@ -376,7 +376,7 @@ global $wpdb, $wp;
 						</div>
 						<div class="col-sm-2">
 							<label for="emp_name">Employee</label>
-							 <select class="form-control" id="emp_name" name="emp_name"  onclick="get_profile()" required>
+							 <select class="form-control" id="emp_name" name="emp_name"  onclick="get_profile_rec(this.value)" required>
 								<?php $gr = ($wpdb->get_results("SELECT id,display_name FROM wp_users ")); ?>
 								<?php foreach ( $gr as $val ) : if($val->id==1) continue;?>
 									<option value="<?php echo $val->id?>"><?php echo $val->display_name?></option>
@@ -386,7 +386,7 @@ global $wpdb, $wp;
 	
 						<div class="col-sm-2">
 							<label for="dep_name">Department</label>
-							 <select class="form-control" id="depart_name" name="dep_name" required>
+							 <select class="form-control" id="depart_name_rec" name="dep_name" required>
 								
 								<?php $gr = ($wpdb->get_results("SELECT id,title FROM wp_erp_hr_depts ")); ?>
 								<?php foreach ( $gr as $val ) : ?>
@@ -406,7 +406,7 @@ global $wpdb, $wp;
 						
 					</div> 
 					<div class="row">
-						<div class="col-sm-2" id="profile">	<!--员工照片 no blank line here-->		
+						<div class="col-sm-2" id="profile_rec">	<!--员工照片 no blank line here-->		
 						</div>
 						
 						<div class="col-sm-2">

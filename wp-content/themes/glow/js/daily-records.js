@@ -1128,8 +1128,44 @@ function addTransData(){
 	
 	
 }
+
+//get photo of the employee
+// val: <select> input value of the employee 
+function get_profile_rec(val) 
+{
+	 
+	$.ajax({
+			//type: 'GET', //这行不用写
+			url: phpUrl+"getProfile.php",
+			//data: {userid: $("#emp_name").val()},
+			data: {userid: val},
+			dataType: "json"
+	})
+	.done(function (data)
+	{
+		//data = JSON.parse(data);// The JSON you are receiving is in string. You have to convert it into JSON object .
+		 
+		console.log(data);
+		console.log(data.img_html);
+		$("#profile_rec").children().remove();		
+		$("#profile_rec").append(data.img_html);
+		$("#profile_rec img").attr({"class": "img-circle img-responsive", "style":"margin: 12 8;", "width":"42","height":"42"});
+		
+		
+		$("#depart_name_rec").val(data.department);
+		//$(".empID").text('Empolyee ID: '+ data.user_id);
+		
+	})
+	.fail(function (data){
+		console.log("load pic fail.");		
+		console.log(data);
+	});
+	
+}
+////get photo of the employee
+// val: <select> input value of the employee 
  
-function get_profile(val,id) //get photo of the employee
+function get_profile(val,id) 
 {
 	var id=id.split("-");
 	var id_num=id[id.length-1];
