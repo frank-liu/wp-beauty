@@ -125,8 +125,28 @@ function dailyRecordsValidation()
 function cashflowValidation()
 {
 	//alert("cashflowValidation");
-	//return false; // 避免提交数据库
-	return true; // 避免提交数据库
+	//var flagSameDate=0;
+	console.log("records_trans: ");
+	console.log(records_trans);
+	var result, flag=0;
+	for(var i=0;i<records_trans.length;i++)
+	{
+		//result = $.grep(records_trans[i], function(e){ return e.date === $("#date_trans").val(); });
+		if (records_trans[i].date == $("#date_trans").val()) 
+		{// multiple items found
+			flag=1;
+			$("#date_trans").attr("style","border: 2px solid red;")
+			alert("The date has been existing, please check the date you entered.");
+			break;
+		}
+	}
+	 
+	
+	if(flag==1)
+		return false;// 避免提交数据库， 因为发现了日期重复的记录。
+	else{
+		return true;
+	} 
 }
 
  
@@ -430,7 +450,7 @@ $(function () {
 		pagerContainer : "#externalPager",
 		paging : true,
 		//pageLoading: true,
-		pageSize : 5,
+		pageSize : 10,
 		pageIndex : 1,
 		pageButtonCount : 5,
 		 
@@ -1363,7 +1383,7 @@ function printDiv(elementId) {
 }
 
  
-
+ var records_trans = [];
 $().ready(function () {
 	//refresh to show a nice clean table after switch to current tab2.
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -1376,7 +1396,7 @@ $().ready(function () {
 	});
 
 	/***********************************************************Tab2 grid cash flow *****************************************/
-	 var records = [];
+	
 	$("#jsGridTransaction").jsGrid({
 		height : "auto",
 		width : "100%",
@@ -1443,12 +1463,19 @@ $().ready(function () {
 				return ("Canceled. Nothing happened.") ;
 			}			
 		},
-		onItemInserted : function (args) {
+		/*onItemInserting: function(args) {
+			// cancel insertion of the item with empty 'name' field
+			if(args.item.date === "2016-10-29") {
+				args.cancel = true;
+				alert("Specify the date of the item!");
+			}
+		},
+		/*onItemInserted : function (args) {
 			//$("#jsGrid").jsGrid("refresh");
 
 			$("#jsGrid").jsGrid("reset");
 			//alert("refrsh!");
-		},
+		},*/
 
 		//db below here----------------------------
 		controller : {
@@ -1495,9 +1522,9 @@ $().ready(function () {
 							"cashin" : r.cash_in
 							};
 							
-						records.push(row); 
+						records_trans.push(row); 
 					});
-					d.resolve(records);					
+					d.resolve(records_trans);					
 				})
 				.fail(function(){
 					console.log("jsGrid cashflow load data fail.");

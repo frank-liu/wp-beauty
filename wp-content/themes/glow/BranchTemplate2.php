@@ -179,7 +179,7 @@ global $wpdb, $wp;
 								<h2>&nbsp;</h2>	
 							</div>
 							<label for="date">Date</label>
-							<input type="date" class="form-control" id="date2" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+							<input type="date" class="form-control" id="date_trans" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
 						 
 							<label for="shop_name">Branch</label>
 							<select class="form-control" id="shop_name2" name="shop_name" required>	
@@ -240,7 +240,7 @@ global $wpdb, $wp;
 					
 					<!--button id="addCashflow_btn"   type="submit" tabindex="-1" style="position:absolute; top:-1000px">Submit</button-->					
 			</fieldset>	
-				<br/><input type="submit" name="transdataFormSubmit" onmouseover="return cal_sale_cashflow()" class="btn btn-success btn-lg btn-block" >
+				<br/><input type="submit" name="transdataFormSubmit" onmouseover="return cal_sale_cashflow()" onclick="return cashflowValidation()" class="btn btn-success btn-lg btn-block" >
 		  </form>
 	  </div>
 		
@@ -407,7 +407,7 @@ global $wpdb, $wp;
 							<div class="row">
 								<div class="col-sm-12">
 									<label for="date">Date</label>
-									<input type="date" class="form-control" style="font-size:12px;" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+									<input type="date" class="form-control" style="font-size:12px;" id="date1" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
 								</div>
 							</div>
 							<div class="row">
@@ -506,79 +506,14 @@ global $wpdb, $wp;
 		<br/>
 		 
 	</div> <!--dialog tab1 end-->
-	<!--Tab 2 dialog 显示cashflow-->  
-	<div id="dialog-form-cashflow" title="Daily Transactions">
-		  <form id="trans_input_form" onsubmit="trans_input_form_submit.disabled = true; return true;" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertTrans.php" method="post">
-			<fieldset>
-					 
-					<div class="row">	
-						<div class="col-sm-6">
-							<label for="shop_name">Shop</label>
-							<select class="form-control" id="shop_name2" name="shop_name" required>								
-								<?php $gr = ($wpdb->get_results("SELECT id,name FROM wp_erp_company_locations ")); ?>
-								<?php foreach ( $gr as $val ) : ?>
-									<option value="<?php echo $val->id?>"><?php echo $val->name?></option>
-								<?php endforeach; ?>								 
-							</select>
-						</div> 
-						
-						<div class="col-sm-6">
-							<label for="date">Date</label>
-							<input type="date" class="form-control" id="date2" name="date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
-						</div>
-						
-					</div>	<br/>
-					
-					<div class="row">	
-						<div class="col-sm-4">
-							<label for="cash">Cash:</label>
-							<input type="number" name="cash"     value='0.00' placeholder='0.00' class="form-control" id="cash" >
-						</div>
-						
-						<div class="col-sm-4">
-							<label for="dep_name">Card:</label>
-							<input type="number" name="card"     value='0.00' placeholder='0.00' class="form-control" id="card" >
-						</div>
-						
-						<div class="col-sm-4">
-							<label for="online">Online:</label>
-							<input type="number" name="online"     value='0.00' placeholder='0.00' class="form-control" id="online" >
-						</div>
-						
-						
-					</div>	<br/>
-					<div class="row">
-						<div class="col-sm-4">
-							<label for="cash">Prepaid:</label>
-							<input type="number" name="prepaid"     value='0.00' placeholder='0.00' class="form-control" id="prepaid" >
-						</div>
-						
-						<div class="col-sm-4">
-							<label for="refund">Refund:</label>
-							<input type="number" name="refund"     value='0.00' placeholder='0.00' class="form-control" id="refund" >
-						</div>
-						<div class="col-sm-4">
-							<label for="total">Total:</label>
-							<input type="number" name="total"     value='0.00' placeholder='0.00' class="form-control" id="total" >
-						</div>
-					
-					</div>
-					
-					<button id="addCashflow_btn"  type="submit" tabindex="-1" style="position:absolute; top:-1000px">Submit</button>					
-			</fieldset>	
-				<br/><input type="submit" name="trans_input_form_submit" class="btn btn-success btn-lg btn-block" onclick="return cashflowValidation()">
-		  </form>
-		 
-		<br/>
-		 
-	</div> <!-- dialog-form-trans end-->
-		
+	 	
 	  <!--button id="opener">Add a new</button-->
 	<a id="IP" href="http://geoiplookup.net/ip/"+"javascript:$("IP").innerHTML();" target="_blank"></a>
-	<!--Print button-->
+	<!--Print button 
 	<a style="float:right;text-align:right;" class="no-print" href="javascript:printDiv('jsGrid');">Print</a> 
 	<textarea id="printing-css" style="display:none;">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{font:normal normal .8125em/1.4 Arial,Sans-Serif;background-color:white;color:#333}strong,b{font-weight:bold}cite,em,i{font-style:italic}a{text-decoration:none}a:hover{text-decoration:underline}a img{border:none}abbr,acronym{border-bottom:1px dotted;cursor:help}sup,sub{vertical-align:baseline;position:relative;top:-.4em;font-size:86%}sub{top:.4em}small{font-size:86%}kbd{font-size:80%;border:1px solid #999;padding:2px 5px;border-bottom-width:2px;border-radius:3px}mark{background-color:#ffce00;color:black}p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:1.5em 0}hr{height:1px;border:none;background-color:#666}h1,h2,h3,h4,h5,h6{font-weight:bold;line-height:normal;margin:1.5em 0 0}h1{font-size:200%}h2{font-size:180%}h3{font-size:160%}h4{font-size:140%}h5{font-size:120%}h6{font-size:100%}ol,ul,dl{margin-left:3em}ol{list-style:decimal outside}ul{list-style:disc outside}li{margin:.5em 0}dt{font-weight:bold}dd{margin:0 0 .5em 2em}input,button,select,textarea{font:inherit;font-size:100%;line-height:normal;vertical-align:baseline}textarea{display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}pre,code{font-family:"Courier New",Courier,Monospace;color:inherit}pre{white-space:pre;word-wrap:normal;overflow:auto}blockquote{margin-left:2em;margin-right:2em;border-left:4px solid #ccc;padding-left:1em;font-style:italic}table[border="1"] th,table[border="1"] td,table[border="1"] caption{border:1px solid;padding:.5em 1em;text-align:left;vertical-align:top}th{font-weight:bold}table[border="1"] caption{border:none;font-style:italic}.no-print{display:none}</textarea>
     <iframe id="printing-frame" name="print_frame" src="about:blank" style="display:none;"></iframe>
+	-->
   </div>
 </div>
 

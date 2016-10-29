@@ -2620,3 +2620,309 @@
 
 
 
+29-Oct-2016 12:10:40 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 9
+    [card] => 9
+    [online] => 9
+    [prepaid] => 9
+    [refund] => 9
+    [total] => 18.00
+    [till_start] => 9
+    [till_end] => 9
+    [expense] => 9
+    [wage] => 9
+    [cash_offset] => 9
+    [cash_in] => 9.00
+)
+
+
+29-Oct-2016 12:37:19 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 5
+    [card] => 5
+    [online] => 5
+    [prepaid] => 5
+    [refund] => 5
+    [total] => 10.00
+    [till_start] => 5
+    [till_end] => 5
+    [expense] => 5
+    [wage] => 5
+    [cash_offset] => 5
+    [cash_in] => 5.00
+)
+
+
+29-Oct-2016 12:39:10 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 6
+    [card] => 6
+    [online] => 6
+    [prepaid] => 6
+    [refund] => 6
+    [total] => 12.00
+    [till_start] => 6
+    [till_end] => 6
+    [expense] => 6
+    [wage] => 6
+    [cash_offset] => 6
+    [cash_in] => 
+)
+
+
+29-Oct-2016 12:40:45 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 6
+    [card] => 6
+    [online] => 6
+    [prepaid] => 6
+    [refund] => 6
+    [total] => 12.00
+    [till_start] => 6
+    [till_end] => 6
+    [expense] => 6
+    [wage] => 6
+    [cash_offset] => 6
+    [cash_in] => 6.00
+)
+
+
+29-Oct-2016 12:42:03 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 21
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 6.00
+    [card] => 6.00
+    [online] => 6.00
+    [prepaid] => 6.00
+    [refund] => 6.00
+    [total] => 12.00
+    [till_start] => 6.00
+    [till_end] => 6.00
+    [expense] => 6.00
+    [wage] => 6.00
+    [cash_offset] => 6.00
+    [cash_in] => 6.00
+)
+
+
+
+
+29-Oct-2016 12:42:08 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 19
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 5.00
+    [card] => 5.00
+    [online] => 5.00
+    [prepaid] => 5.00
+    [refund] => 5.00
+    [total] => 10.00
+    [till_start] => 5.00
+    [till_end] => 5.00
+    [expense] => 5.00
+    [wage] => 5.00
+    [cash_offset] => 5.00
+    [cash_in] => 5.00
+)
+
+
+
+
+29-Oct-2016 12:42:33 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 9
+    [card] => 9
+    [online] => 9
+    [prepaid] => 9
+    [refund] => 9
+    [total] => 18.00
+    [till_start] => 9
+    [till_end] => 9
+    [expense] => 9
+    [wage] => 9
+    [cash_offset] => 9
+    [cash_in] => 9.00
+)
+
+
+29-Oct-2016 12:50:28 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 8
+    [card] => 8
+    [online] => 8
+    [prepaid] => 8
+    [refund] => 8
+    [total] => 16.00
+    [till_start] => 8
+    [till_end] => 8
+    [expense] => 8
+    [wage] => 8
+    [cash_offset] => 8
+    [cash_in] => 8.00
+)
+
+
+29-Oct-2016 12:52:45 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 22
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 9.00
+    [card] => 9.00
+    [online] => 9.00
+    [prepaid] => 9.00
+    [refund] => 9.00
+    [total] => 18.00
+    [till_start] => 9.00
+    [till_end] => 9.00
+    [expense] => 9.00
+    [wage] => 9.00
+    [cash_offset] => 9.00
+    [cash_in] => 9.00
+)
+
+
+
+
+29-Oct-2016 12:52:53 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 18
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 9.00
+    [card] => 9.00
+    [online] => 9.00
+    [prepaid] => 9.00
+    [refund] => 9.00
+    [total] => 18.00
+    [till_start] => 9.00
+    [till_end] => 9.00
+    [expense] => 9.00
+    [wage] => 9.00
+    [cash_offset] => 9.00
+    [cash_in] => 9.00
+)
+
+
+
+
+29-Oct-2016 12:52:58 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 20
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 6.00
+    [card] => 6.00
+    [online] => 6.00
+    [prepaid] => 6.00
+    [refund] => 6.00
+    [total] => 12.00
+    [till_start] => 6.00
+    [till_end] => 6.00
+    [expense] => 6.00
+    [wage] => 6.00
+    [cash_offset] => 6.00
+    [cash_in] => 0.00
+)
+
+
+
+
+29-Oct-2016 13:02:07 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-29
+    [shop_id] => 1
+    [cash] => 3
+    [card] => 3
+    [online] => 3
+    [prepaid] => 3
+    [refund] => 3
+    [total] => 6.00
+    [till_start] => 3
+    [till_end] => 3
+    [expense] => 3
+    [wage] => 3
+    [cash_offset] => 3
+    [cash_in] => 3.00
+)
+
+
+29-Oct-2016 13:12:34 UTC,  Name: frank,  Insert: Array
+(
+    [date] => 2016-10-28
+    [shop_id] => 1
+    [cash] => 4
+    [card] => 4
+    [online] => 4
+    [prepaid] => 4
+    [refund] => 4
+    [total] => 8.00
+    [till_start] => 4
+    [till_end] => 4
+    [expense] => 4
+    [wage] => 4
+    [cash_offset] => 4
+    [cash_in] => 4.00
+)
+
+
+29-Oct-2016 13:21:45 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 23
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 8.00
+    [card] => 8.00
+    [online] => 8.00
+    [prepaid] => 8.00
+    [refund] => 8.00
+    [total] => 16.00
+    [till_start] => 8.00
+    [till_end] => 8.00
+    [expense] => 8.00
+    [wage] => 8.00
+    [cash_offset] => 8.00
+    [cash_in] => 8.00
+)
+
+
+
+
+29-Oct-2016 13:21:49 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 24
+    [shop_id] => 1
+    [date] => 2016-10-29
+    [cash] => 3.00
+    [card] => 3.00
+    [online] => 3.00
+    [prepaid] => 3.00
+    [refund] => 3.00
+    [total] => 6.00
+    [till_start] => 3.00
+    [till_end] => 3.00
+    [expense] => 3.00
+    [wage] => 3.00
+    [cash_offset] => 3.00
+    [cash_in] => 3.00
+)
+
+
+
+

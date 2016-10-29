@@ -32,8 +32,16 @@
 	 	
 	);
 	
-    //print_r(array_values($data_array));
-	 
+    //if a entry has the date same as the one received, then nothing to do and reminder user that the date has been exsiting.
+	$query="select id from  " . $table ." where date =" . $_POST['date']; //$_POST['shop_name'] actually is the shop id .
+	$gr = $wpdb->get_row($query);
+	if($gr)
+	{
+		print_r ("existing");
+		header("Location: {$_SERVER['HTTP_REFERER']}"); //这里要重写返回地址。因该是参数传过来的。
+		exit;
+	}
+	
 	//Must check data validation here
 	$query="select id from wp_shops where id=" . $_POST['shop_name']; //$_POST['shop_name'] actually is the shop id .
 	//print_r($query);
