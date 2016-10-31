@@ -278,34 +278,21 @@ global $wpdb, $wp;
     </div>
 	<!--Settings Tab--->
 	<div id="menu4" class="tab-pane fade">
-      <!-- Set Product Sales Rate --->  
-	  <form id="branch_manager_form" action="" method="post">
-      <div class="row">
-		<div class="col-sm-2">
-			<h4>Product Sales Rate</h4>	
-		</div>
-		<div class="col-sm-1">
-			<a id="save_salerate_btn" style="background-color:#5cb85c;color:white;padding-left:15px;margin-top: 0.5em; margin-left: -2em;" class="form-control" onclick="saveSalesRate();">Save</a>
-		</div>
-	  </div>  	 
-		<fieldset>
-		<div class="row">
-			<?php $prd = $wpdb->get_results("SELECT * FROM wp_shop_products") ; $idx=0; ?>
-			<?php foreach ( $prd as $val ) :?>
-			<div class="col-sm-2">
-				<label for="prd_settings">Product</label>			
-				<input type="text" class="form-control"  <?php echo 'name="prd_settings-' . ($val->product_id) . '"';echo 'id="prd_settings-' . ($val->product_id) . '"';?> value="<?php echo $val->product_name; ?>" >	
-			
-			</div>
-			<div class="col-sm-1">
-				<label for="rate_settings">Rate</label>
-				<input type="number" class="form-control"  <?php echo 'name="rate_settings-' . ($val->product_id) . '"'; echo 'id="rate_settings-' . ($val->product_id) . '"';?> value="<?php echo $val->product_sale_rate; ?>" min="0" step="0.01" max="1">	
-			</div>
-			<?php endforeach; ?>
-		</div>
-		</fieldset>
-		</form>
+      
+	  <!-- Set Hourly/Daily rate  --->
+	  <h4>Daily/Hourly Rate </h4>
+	  <!--这里用jsgrid显示 daily rate -->
 	  <hr/>
+	  <!-- Set Product Sales Rate --->  
+	  <h4>Product Sales Rate</h4>
+	  <!--这里用jsgrid显示 bonus rate table -->
+	  <div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div id="jsGrid_prd_sale_rate"></div>
+			<div id="externalPager_prd_sale_rate"></div>
+		</div>
+	  </div>
+	  <hr/>	
 	  
 	  <!-- Set Bonus rate 提交数据库 --->      
 	  <h4>Bonus Threshold & Rate </h4>
@@ -529,6 +516,42 @@ global $wpdb, $wp;
 		<br/>
 		 
 	</div> <!-- dialog-form-trans end-->
+	
+	<!--Tab 4 dialog-form-product-sale -->  
+	<div id="dialog-form-product-sale" title="Product Sales Rate">
+		  <form id="dialog-form-product-sale" onsubmit="product_sale_submit.disabled = true; return true;" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertProductSaleRate.php" method="post">
+			<fieldset>					 
+					<div class="row">	
+						<div class="col-sm-4">
+							<label for="prd_name">Product Name</label>
+							 <select class="form-control" id="prd_name" name="prd_name"   required>
+								<?php $gr = ($wpdb->get_results("SELECT product_id,product_name FROM wp_shop_products ")); ?>
+								<?php foreach ( $gr as $val ) :?>
+									<option value="<?php echo $val->product_id?>"><?php echo $val->product_name?></option>
+								<?php endforeach; ?>
+							 </select>
+						</div>
+						
+						<div class="col-sm-4">
+							<label for="prd_sale_rate">Product Sales Rate</label>
+							<input type="number" name="prd_sale_rate"  value='0.00' step="0.01" min="0" max="1" placeholder='0.00' class="form-control" id="prd_sale_rate" required>
+						</div> 
+						
+						<div class="col-sm-4">
+							<label for="effective_date">Effective Date</label>
+							<input type="date" class="form-control" id="effective_date" name="effective_date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+						</div>
+						
+					</div>	<br/>
+				
+			</fieldset>	
+				<br/><input type="submit" id="product_sale_submit" class="btn btn-success btn-lg btn-block">
+		  </form>
+		 
+		<br/>
+		 
+	</div> <!-- dialog-form-product-sale end-->
+	
 	
 	<!--Tab 4 dialog Bonus Threshold -->  
 	<div id="dialog-form-bonus-threshold" title="Bonus Threshold Settings">

@@ -34,6 +34,8 @@
     <div class="row" data-selected="{{ data.work.designation }}">
         <?php erp_html_form_input( array(
             'label'   => __( 'Job Title', 'erp' ),
+            //'label'   => __( 'Manager', 'erp' ),
+          
             'name'    => 'designation',
             'value'   => '',
             'type'    => 'select',

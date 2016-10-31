@@ -36,6 +36,14 @@ var dialog4 = $("#dialog-form-bonus-threshold").dialog({
 		modal : false,
 
 	});
+/*Tab4 dialog. initialisation */	
+var dialog4 = $("#dialog-form-product-sale").dialog({
+		autoOpen : false,
+		height : 400,
+		width : 450,
+		modal : false,
+
+	});
 
 $(function () {
 	var dialog = $("#dialog-form").dialog({
@@ -53,6 +61,17 @@ $(function () {
 	var dialog2 = $("#dialog-form-cashflow").dialog({
 			autoOpen : false,
 			height : 350,
+			width : 700,
+			modal : false,             
+			close : function () {
+				dialog.find("form")[0].reset();
+			}
+		});
+		
+	// dialog in tab4	
+	var dialog4 = $("#dialog-form-product-sale").dialog({
+			autoOpen : false,
+			height : 300,
 			width : 700,
 			modal : false,             
 			close : function () {
@@ -418,7 +437,7 @@ function insertRow() {
 		});
 	});
 }
-var records = [];
+var records = [] , records_raw=[];
 
 //--------------------------------------Tab1 主体显示表格------------------------------------------------------------------------
 $(function () {
@@ -530,15 +549,16 @@ $(function () {
 					dataType : "json"
 				})
 				.done(function (response) {
-					console.log(response);
-					var i = response.length;
-					console.log("object length: "+i);
 					
+					var i = response.length;
+					records_raw=response; 
+					console.log("records raw: ");
+					console.log(records_raw);
 					$(response).each(
 						function () {
 							r = response[--i]; //one entry//
 						
-							var stl = 0;
+							var stl = 0;//不同产品的售价和
 							for (var j = 0; j < (r.sales.split(',')).length; j++) 
 							{
 								stl += parseFloat(((r.sales.split(',')))[j]) || 0 ;
@@ -712,43 +732,6 @@ $(function () {
 				sorter: "string", // sort as string.
 				filtering : false
 			}
-			/*
-			,
-			{
-				type : "control",
-				css:"no-print", //这样打印时不显示
-				 
-				editButton : false,
-				deleteButton : false,//为了展示，先暂时关闭
-				//deleteButton : false,//为了展示，先暂时关闭
-				clearFilterButton : false,
-				modeSwitchButton : false,
-				width : "auto",
-
-				headerTemplate : function () {
-					//return $("<button>").attr("type", "button").attr("class","btn-css plus").text("+")
-					return $("<span/>").attr("class", "icon-plus") //Tab1
-					.css({
-						'font-size' : "1em",
-						'color' : "#4CAF50" //it's green
-					}).hover(
-						function () {
-						$(this).css({
-							'font-size' : "1.2em",
-							'color' : "#00cc00" //it's green
-						});
-					},
-						function () {
-						$(this).css({
-							'font-size' : "1em",
-							'color' : "#4CAF50" //it's green
-						});
-					}).on("click", function () {
-						$("#dialog-form").dialog().dialog("open");
-						showDetailsDialog("Add", {});
-					});
-				}
-			}*/
 
 		]
 
@@ -1159,6 +1142,65 @@ function filterRecords()
 	return false;//防止提交表格。不要写成true
 }
 
+//根据产品id,dt(date) , 返回对应该产品的sales rate。用来计算comission.
+var sales_rate;
+function get_sales_rate()
+{
+ 
+	 
+	var querysql="select product_id, effective_date, sales_rate from  wp_shop_product_rate "; //选择所有product rate 记录
+ 			
+	//var whereclause=" where product_id= "+id +" and effective_date <= '2016-10-22'";
+	//querysql = querysql + whereclause;
+	//querysql = "SELECT effective_date, sales_rate FROM wp_shop_product_rate WHERE product_id= "+id;
+	console.log(querysql);
+	var rate=0;
+	 
+	$.ajax({
+			type:'POST',
+			data: {'query':querysql},
+			//async:false,
+			url : phpUrl+"getData.php", // read wp_shop_bonus table  
+			dataType : "json"
+	})
+	.done(function(data){
+		// data 是返回所有 id = product id
+		// 所以对data进行逆序排序，取第1个元素，就是离记录日期最近的product rate
+		// 逆序排列 data 
+		data.sort(function(a,b){
+			var aDate = a.effective_date ;
+			var bDate = b.effective_date; 						
+			return ((aDate < bDate) ? 1 : ((aDate > bDate) ? -1 : 0)); //逆序排序	
+		});
+		sales_rate = data;
+		/*
+		$(data).each(function (index){
+			if(dt>=data[index].effective_date)
+			{
+				rate= data[index].sales_rate;
+				 
+				return false;
+			}
+		});
+		*/
+		
+		console.log("sales_rate值: ");
+		
+		console.log(sales_rate);
+	
+		
+	})
+	.fail(function(data){
+		console.log("product_rate table: ");
+		
+		console.log(data);
+		rate= 0;
+		
+	});
+
+	 
+}
+
 //show breakdown in breakdown area: #wage_breakdown
 function show_breakdown()
 {
@@ -1215,16 +1257,19 @@ function show_breakdown()
 		console.log("逆序排序的records_filtered：");
 		console.log(records_filtered);
 		
-		//2.计算bonus
-		var d=records_filtered[0].date;  //init
-		for(i=0;i<records_filtered.length;i++)//对每一个符合条件的记录进行下面计算
+		//2.计算bonus		
+		for(var i=0;i<records_filtered.length;i++)//对每一个符合条件的记录进行下面计算
 		{
 			var turnover= parseFloat(records_filtered[i].turnover) ;
 			
-			$.each(bonus_band,function(index, item)//bonus_band已经是按时间逆序排列了
+			$.each(bonus_band,function(index, item)//bonus_band已经是按时间逆序排列了。但是没有去掉employee id 不符合的记录
 			{
+				if(item.employee_id!==records_filtered[i].user_id)
+				{//去掉ID不符合的记录
+					return true;
+				}
 				if(records_filtered[i].date >= item.effective_date )//如果 records 日期 > threshold 日期
-				{//用当前threshold
+				{//用当前日期对应的threshold
 					if(turnover > parseFloat(item.bonus_threshold))
 					{
 						bonus_sum += (turnover- parseFloat(item.bonus_threshold)) * parseFloat(item.bonus_threshold_rate);
@@ -1251,25 +1296,7 @@ function show_breakdown()
 					console.log("不参与计算： turnover , item.bonus_threshold:");
 					console.log(turnover+","+item.bonus_threshold);
 				}
-
-				/*
-				if( turnover > parseFloat(item.bonus_threshold))
-				{
-					bonus_sum += (turnover- parseFloat(item.bonus_threshold)) * parseFloat(item.bonus_threshold_rate);
-					console.log("bonus_sum: ");
-				    console.log(bonus_sum);
-					
-					bonus_flag=1;
-					//为了显示用，不参与计算
-					//bonus_breakdown += "Bonus threshold " + "£"+ item.bonus_threshold + " , Bonus threshold rate: " + item.bonus_threshold_rate;
-					bonus_breakdown +="("+ turnover.toFixed(2) +" - " + item.bonus_threshold + ")" + " x " + item.bonus_threshold_rate + " + ";
-					
-				}
-				else{
-					console.log("不参与计算： turnover , item.bonus_threshold:");
-					console.log(turnover+","+item.bonus_threshold);
-					//return false;
-				}*/
+				 
 			});
 			
 		}
@@ -1385,25 +1412,52 @@ function show_breakdown()
 				
 				
 				
-				//3.提成计算
-				var sales_array = records_filtered[i].sales.split(',');				
-				console.log("sales_array: ");
-				console.log(sales_array);
-				sales_rate=["0.2","0.3","0.4"];//这里要读数据库，不因该是静态数据。
+				//3.提成计算(i.e,: commision rate / product sales rate)
+				//var id=records_filtered[i].id;
+				var sales_array="";
+				$(records_raw).each(function(index){
+					if(records_raw[index].id=== records_filtered[i].id)
+					{
+						sales_array =  records_raw[index].sales;
+						sales_array=sales_array.split(',');
+						return false;
+					}
+					
+				});
+
 				
+				//console.log("product sales 数组: ");
+				//console.log(sales_array);
+				
+				var rate=0;
 				for(j=0;j<sales_array.length;j++)
 				{
-					console.log("sales_array["+j+"]: "+ parseFloat(sales_array[j]));
+					//console.log("sales_array["+j+"]: "+ parseFloat(sales_array[j]));
 						
-					if(parseFloat(sales_array[j])>0  )
+					if(parseFloat(sales_array[j])>0  ) //只显示sales大于0的
 					{
-						console.log("sales_array.length: "+sales_array.length);
-						commission_sum += parseFloat(sales_rate[j]) * parseFloat(sales_array[j]);
+						//sales_rate 的值要根据 product id 来定
+					  
 						
-					    commission_breakdown += "£" +sales_array[j]+ " x "+ sales_rate[j] + " + ";
+						$(sales_rate).each(function (index){
+							//console.log("product id: "+sales_rate[index].product_id + " , rate: "+ sales_rate[index].sales_rate + " , sales_rate[index].effective_date: "+sales_rate[index].effective_date);
+							//j 标定着产品顺序，product id 从2开始编号。所以加2
+							//这里有个弱点，如果产品id出现跳号，那么有问题。
+							if((sales_rate[index].product_id==(j+2)) && (records_filtered[i].date >= sales_rate[index].effective_date))
+							{
+								rate= sales_rate[index].sales_rate;
+								 
+								return false;
+							}
+						});
+					 
+						commission_sum += parseFloat(rate) * parseFloat(sales_array[j]);	
+						
+					    commission_breakdown += "£" +sales_array[j]+ " x "+ rate + " + ";
 					}
 							
-				}	
+				}
+				
 				
 			}
 		 
@@ -1696,9 +1750,11 @@ function saveBranchManager()
 $().ready(function () {
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	  $("#jsGridTransaction").jsGrid("refresh");
+	  $("#jsGrid_prd_sale_rate").jsGrid("refresh"); //刷新Settings tab的 product sales rate 表格
 	  $("#jsGrid_bonus_threshold").jsGrid("refresh"); //刷新Settings tab的bonus threshold 表格
+	  
 	});
-
+	get_sales_rate();//提前获取product sales rate 方便后期计算
 	$('#ord_ref').click(function () {
 		order_add();
 	});
@@ -1904,6 +1960,210 @@ $().ready(function () {
     });
 	/****************************************************Tab2 grid end**********************************************************/
 	
+	/**************************************************** Tab4 Settings Product Sales Rate **********************************************************/
+	$("#jsGrid_prd_sale_rate").jsGrid({
+		height : "auto",
+		width : "100%",
+
+		//filtering: true,
+		sorting : true,
+		//editing: true,
+		//inserting: true,
+		/**/
+		autoload : true,
+		pagerContainer : "#externalPager_prd_sale_rate",
+		paging : true,
+		//pageLoading: true,
+		pageSize : 5,
+		pageIndex : 1,
+		pageButtonCount : 5,
+		/**/
+		rowClick: function(args) { 
+
+			//console.log(args.item.OrderID);
+			orderIdClicked=args.item.OrderID;
+			return args.item.OrderID;
+		},
+		deleteConfirm : function (item) {
+			 
+			var msg="The entry:\n\n " +"#"+ item.entry_id + ","+ item.product_name +","+ item.product_sale_rate + ", .... \n\n will be DELETED. \n Are you sure?";
+			var deleteFlag=0;
+			
+			var answer=confirm(msg);
+			if (answer==true)
+			{
+				//php delete a row in table in db
+				var tb="wp_shop_product_rate";
+				$.ajax({
+					type: "POST",
+					url: phpUrl+"deleteData.php",  
+					data: {
+						id: item.entry_id,
+						table: tb 
+					}
+				 
+				})
+				.done(function(data) {	
+					deleteFlag=1;//表明已删除	
+					
+					console.log("delete done!");
+					return ("The entry has been Deleted.");
+				})
+				.fail(function(xhr, status, error)
+				{
+					
+					console.log("cannot delete  in db");												 
+					console.log(xhr.responseText);
+					console.log(status);
+					console.log(error);
+				});	
+			    
+				 
+			}
+			else
+			{
+				location.reload(false);//刷新页面
+				return ("Canceled. Nothing happened.") ;		
+				
+			}			
+			
+		},
+	 
+		//db below here----------------------------
+		controller : {
+			loadData : function () {
+				var d = $.Deferred();			 
+           
+				var prd_rec = [];
+				var querysql="select \
+					rt.id,  rt.effective_date, rt.sales_rate, \
+					prd.product_name \
+					from \
+					wp_shop_products prd,  wp_shop_product_rate rt \
+					where \
+					prd.product_id=rt.product_id";
+				$.ajax({
+					type:'POST',
+					data: {'query':querysql},
+					url : phpUrl+"getData.php", // read wp_shop_bonus table  
+					dataType : "json"
+				})
+				.done(function (data) {
+					
+					var i = data.length;
+					
+					$(data).each(function () {
+						var r = data[--i]; //one entry//
+						console.log("r: "+r);
+						
+						var row = {
+							"prd_effective_date" : r.effective_date,
+							"entry_id" : r.id,	// 			 
+							"product_name" : r.product_name,
+							"product_sale_rate" : r.sales_rate				 
+					 
+						};
+						 
+						prd_rec.push(row); 
+					});
+					prd_rec.sort(function(a,b){
+						var aId = a.prd_id ; 
+						var bId = b.prd_id; 						
+						return ((aId < bId) ? -1 : ((aId > bId) ? 1 : 0)); //顺序排序
+									
+					});
+					d.resolve(prd_rec);					
+				})
+				.fail(function(data){
+					console.log("jsGrid bonus table load data fail.");
+					console.log(data);
+				});
+				return d.promise();
+			}
+		},
+		//db above ----------------------------
+
+		fields : [
+			{
+				name : "entry_id",
+				title: "Entry ID",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : true,
+				editing: false,
+				width : "auto"
+			},
+			{
+				name : "product_name", // 对应数组row中的index
+				title : "Product Name",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+				
+			},
+			{
+				name : "prd_effective_date", // 对应数组row中的index
+				title : "Effective Date",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+				
+			}, 			
+			{
+				name : "product_sale_rate",
+				title : "Sales Rate",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},			 
+		
+			{
+				type : "control",
+				editButton : false,
+				deleteButton : true,//为了展示，先暂时关闭
+				//deleteButton : false,//为了展示，先暂时关闭
+				clearFilterButton : false,
+				modeSwitchButton : false,
+
+				headerTemplate : function () {
+					return $("<span/>").attr("class", "icon-plus") //tab2
+					.css({
+						'font-size' : "1em",
+						'color' : "#4CAF50" //it's green
+					}).hover(
+						function () {
+							$(this).css({
+								'font-size' : "1.2em",
+								'color' : "#00cc00" //it's green
+							});
+						},
+						function () {
+							$(this).css({
+								'font-size' : "1em",
+								'color' : "#4CAF50" //it's green
+						});
+					}).on("click", function () {
+						$("#dialog-form-product-sale").dialog().dialog("open");
+						showDetailsDialog("Add", {});
+					});
+				}
+			}
+				
+
+		]
+
+	});	
+	
+	/**************************************************** Tab4 Settings Product Sales Rate end **********************************************************/
+	
+	var bonus_rec = [];//存放bonus threshold , threshold rate 
 	/**************************************************** Tab4 Settings Bonus **********************************************************/
 	$("#jsGrid_bonus_threshold").jsGrid({
 		height : "auto",
@@ -1966,7 +2226,7 @@ $().ready(function () {
 			}
 			else
 			{
-				//location.reload(false);//刷新页面
+				location.reload(false);//刷新页面
 				return ("Canceled. Nothing happened.") ;		
 				
 			}			
@@ -1985,9 +2245,7 @@ $().ready(function () {
 		//db below here----------------------------
 		controller : {
 			loadData : function () {
-				var d = $.Deferred();			 
-           
-				var bonus_rec = [];
+				var d = $.Deferred();
 				var querysql="select \
 					usr.display_name, \
 					usr.id usrid, \
@@ -2009,8 +2267,7 @@ $().ready(function () {
 				.done(function (data) {
 					
 					var i = data.length;
-					console.log("bonus object length: "+i);
-					//console.log("bonus object length: "+i);
+				 
 					$(data).each(function () {
 						var r = data[--i]; //one entry//
 						console.log("r: "+r);
@@ -2105,7 +2362,7 @@ $().ready(function () {
 			},
 			{
 				name : "bonus_threshold",
-				title: "Threshold",
+				title: "Turnover Threshold",
 				type : "text",
 				align : "center",
 				autosearch : true,

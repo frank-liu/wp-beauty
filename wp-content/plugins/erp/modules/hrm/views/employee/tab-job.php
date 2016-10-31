@@ -80,9 +80,7 @@
     <?php if ( current_user_can( 'erp_edit_employee', $employee->id ) ) : ?>
 
         <h3><?php _e( 'Compensation', 'erp' ) ?></h3>
-        <?php if ( current_user_can( 'erp_manage_jobinfo' ) ) { ?>
-            <a href="#" id="erp-empl-compensation" class="action button" data-id="<?php echo $employee->id; ?>" data-template="erp-employment-compensation" data-title="<?php _e( 'Update Compensation', 'erp' ); ?>"><?php _e( 'Update Compensation', 'erp' ); ?></a>
-        <?php } ?>
+		<!--delete "Compensation Update"-->
 
         <table class="widefat">
             <thead>

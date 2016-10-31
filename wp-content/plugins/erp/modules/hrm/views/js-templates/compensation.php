@@ -13,6 +13,8 @@
         <?php erp_html_form_input( array(
             'label'    => __( 'Pay Rate', 'erp' ),
             'name'     => 'pay_rate',
+			'type'     => 'text',			 			
+			//'type'     => 'number',			 			
             'value'    => '{{ data.work.pay_rate }}',
             'required' => true,
         ) ); ?>

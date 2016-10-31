@@ -1,0 +1,33 @@
+ <form id="branch_manager_form" action="" method="post">
+		<div class="row">
+			<div class="col-sm-2">
+				<h4>Product Sales Rate</h4>	
+			</div>
+			<div class="col-sm-1">
+				<!-- prd_settings 保存按钮--->
+				<a id="save_salerate_btn" style="background-color:#5cb85c;color:white;padding-left:15px;margin-top: 0.5em; margin-left: -2em;" class="form-control" onclick="saveSalesRate();">Save</a>
+			</div>
+		</div>  	 
+		<fieldset>
+		<div class="row">
+			<div class="col-sm-2">
+				<label for="prd_effective_date">Effective Date</label>			
+				<input type="date" class="form-control" id="prd_effective_date" name="prd_effective_date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+						
+			</div>
+			<?php $prd = $wpdb->get_results("SELECT * FROM wp_shop_products") ; $idx=0; ?>
+			<?php foreach ( $prd as $val ) :?>
+			<div class="col-sm-2">
+				<label for="prd_settings">Product</label>			
+				<input type="text" class="form-control"  <?php echo 'name="prd_settings-' . ($val->product_id) . '"';echo 'id="prd_settings-' . ($val->product_id) . '"';?> value="<?php echo $val->product_name; ?>" readonly>	
+			
+			</div>
+			<div class="col-sm-1">
+				<label for="rate_settings">Rate</label>
+				<input type="number" class="form-control"  <?php echo 'name="rate_settings-' . ($val->product_id) . '"'; echo 'id="rate_settings-' . ($val->product_id) . '"';?> value="<?php echo $val->product_sale_rate; ?>" min="0" step="0.01" max="1">	
+			</div>
+			<?php endforeach; ?>
+		</div>
+		</fieldset>
+		</form>
+	  <hr/>

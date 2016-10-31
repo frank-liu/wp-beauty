@@ -2926,3 +2926,42 @@
 
 
 
+29-Oct-2016 21:57:34 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-29
+    [product_id] => 2
+    [product_sale_rate] => 0.5
+)
+
+
+29-Oct-2016 21:59:05 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-29
+    [product_id] => 2
+    [sales_rate] => 0.6
+)
+
+
+29-Oct-2016 22:00:39 UTC,  Name: frank, User ID: 1, Delete 
+
+
+
+29-Oct-2016 22:02:17 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 4
+    [product_id] => 2
+    [sales_rate] => 0.60
+    [effective_date] => 2016-10-29
+)
+
+
+
+
+29-Oct-2016 22:55:26 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-22
+    [product_id] => 2
+    [sales_rate] => 0.6
+)
+
+
