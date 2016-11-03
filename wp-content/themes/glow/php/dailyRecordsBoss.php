@@ -9,15 +9,15 @@
 	$query="select 
 		u.display_name, 
 		dep.title,
-		dr.id, dr.date,dr.employee_id, dr.start_time,dr.end_time, dr.wk_hours,dr.wage,dr.sales,dr.turnover,dr.if_paid, 
-		emp.min_hrs, emp.pay_rate, emp.pay_type, 
-		sh.shop_name 
+		dr.id, dr.date,dr.employee_id, dr.start_time,dr.end_time, dr.wk_hours,dr.wage,dr.sales,dr.turnover,dr.if_paid, dr.pay_rate, 
+		emp.min_hrs, emp.pay_type, 
+		sh.name 
 	from 
 		wp_shop_daily_records dr,
 		wp_erp_hr_depts dep,
         wp_users u,
 		wp_erp_hr_employees emp, 
-		wp_shops sh 
+		wp_erp_company_locations sh 
 	where 
 		dr.employee_id=u.id and 
 		emp.user_id=u.id and 

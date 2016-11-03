@@ -409,11 +409,8 @@ function insertRow() {
 
 //Tab1 主体显示表格
 $(function () {
-	var spreadsheetID = "1nH7lkY7RnFv_l8u0nL9gsrs4_rwODBQiTiuD2FF0GBo";
+	//var spreadsheetID = "1nH7lkY7RnFv_l8u0nL9gsrs4_rwODBQiTiuD2FF0GBo";
 
-	//myurl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
-	//var phpurl = $(location).attr('href');	
-   // phpurl = phpUrl+"dailyRecords.php";
 	var  orderIdClicked="";
     var records = [];
 	

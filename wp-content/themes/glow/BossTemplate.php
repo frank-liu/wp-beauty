@@ -280,12 +280,17 @@ global $wpdb, $wp;
 	<div id="menu4" class="tab-pane fade">
       
 	  <!-- Set Hourly/Daily rate  --->
-	  <h4>Daily/Hourly Rate </h4>
-	  <!--这里用jsgrid显示 daily rate -->
+	  <h4>Pay Rate </h4>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div id="jsGrid_pay_rate"></div>
+				<div id="externalPager_pay_rate"></div>
+			</div>
+		</div>
 	  <hr/>
+	  
 	  <!-- Set Product Sales Rate --->  
 	  <h4>Product Sales Rate</h4>
-	  <!--这里用jsgrid显示 bonus rate table -->
 	  <div class="row">
 		<div class="col-sm-10 col-sm-offset-1">
 			<div id="jsGrid_prd_sale_rate"></div>
@@ -294,9 +299,8 @@ global $wpdb, $wp;
 	  </div>
 	  <hr/>	
 	  
-	  <!-- Set Bonus rate 提交数据库 --->      
+	  <!-- Set Bonus rate  --->      
 	  <h4>Bonus Threshold & Rate </h4>
-	  <!--这里用jsgrid显示 bonus rate table -->
 	  <div class="row">
 		<div class="col-sm-10 col-sm-offset-1">
 			<div id="jsGrid_bonus_threshold"></div>
@@ -517,9 +521,80 @@ global $wpdb, $wp;
 		 
 	</div> <!-- dialog-form-trans end-->
 	
-	<!--Tab 4 dialog-form-product-sale -->  
+	<!--Tab 4 dialog-form Pay Rate -->  
+	<div id="dialog-form-pay-rate" title="Pay Rate">
+		  <form id="dialog-pay-rate" onsubmit="pay_rate_submit.disabled = true; return true;" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertPayRate.php" method="post">
+			<fieldset>	
+					<div class="row">	
+						<div class="col-sm-4">
+							<label for="emp_name">Employee</label><span id="empID_rec"></span>
+							 <select class="form-control" id="emp_name" name="emp_name" onclick="get_profile_rec(this.value)" required>
+								<?php $gr = ($wpdb->get_results("SELECT id,display_name FROM wp_users ")); ?>
+								<?php foreach ( $gr as $val ) : if($val->id==1) continue;?>
+									<option value="<?php echo $val->id?>"><?php echo $val->display_name?></option>
+								<?php endforeach; ?>
+							 </select>
+						</div>
+						
+						<div class="col-sm-4">
+							<label for="branch_name">Branch</label>
+							 <select class="form-control" id="branch_name" name="branch_name" required>								
+								<?php $gr = ($wpdb->get_results("SELECT id,name FROM wp_erp_company_locations ")); ?>
+								<?php foreach ( $gr as $val ) : ?>
+									<option value="<?php echo $val->id?>"><?php echo $val->name?></option>
+								<?php endforeach; ?>								 
+							 </select>
+						</div> 
+						<div class="col-sm-4">
+						
+							<label for="dep_name">Department</label>
+							 <select class="form-control" id="depart_name_payrate" name="dep_name" required>
+								
+								<?php $gr = ($wpdb->get_results("SELECT id,title FROM wp_erp_hr_depts ")); ?>
+								<?php foreach ( $gr as $val ) : ?>
+									<option value="<?php echo $val->id?>"><?php echo $val->title?></option>
+								<?php endforeach; ?>								 
+							 </select>
+						</div>
+					</div>	<br/>
+					
+					<div class="row">	
+						<div class="col-sm-4">
+							<label for="effective_date">Effective Date</label>
+							<input type="date" class="form-control blue" id="effective_date" name="effective_date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+						</div>
+						
+						<div class="col-sm-4">
+							<label for="pay_type">Pay Type</label>
+							 <select class="form-control" style="text-transform: capitalize;" id="pay_type" name="pay_type"   required>
+								<option value="1">hourly</option>
+								<option value="2">daily</option>
+								<option value="3">massage</option>
+								 
+							 </select>
+						</div>	
+						
+						<div class="col-sm-4">
+							<label for="pay_rate">Pay Rate</label>
+							<input type="number" name="pay_rate"  value='0.00' step="0.01" min="0"  placeholder='0.00' class="form-control blue" id="pay_rate" required>
+						</div> 
+						
+						 
+						
+					</div>	<br/>
+				
+			</fieldset>	
+				<br/><input type="submit" id="pay_rate_submit" class="btn btn-success btn-lg btn-block">
+		  </form>
+		 
+		<br/>
+		 
+	</div> <!-- dialog-form Pay Rate end-->
+	
+	
+	<!--Tab 4 dialog-form Product Sale -->  
 	<div id="dialog-form-product-sale" title="Product Sales Rate">
-		  <form id="dialog-form-product-sale" onsubmit="product_sale_submit.disabled = true; return true;" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertProductSaleRate.php" method="post">
+		  <form id="dialog-product-sale" onsubmit="product_sale_submit.disabled = true; return true;" action="<?php echo get_site_url(); ?>/wp-content/themes/glow/php/insertProductSaleRate.php" method="post">
 			<fieldset>					 
 					<div class="row">	
 						<div class="col-sm-4">

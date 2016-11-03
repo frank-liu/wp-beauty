@@ -37,10 +37,18 @@ var dialog4 = $("#dialog-form-bonus-threshold").dialog({
 
 	});
 /*Tab4 dialog. initialisation */	
-var dialog4 = $("#dialog-form-product-sale").dialog({
+var dialog5 = $("#dialog-form-product-sale").dialog({
 		autoOpen : false,
 		height : 400,
 		width : 450,
+		modal : false,
+
+	});
+	/*Tab4 dialog. pay rate, initialisation */	
+var dialog6 = $("#dialog-form-pay-rate").dialog({
+		autoOpen : false,
+		height : 400,
+		width : "50%",
 		modal : false,
 
 	});
@@ -68,8 +76,17 @@ $(function () {
 			}
 		});
 		
+	var dialog6 = $("#dialog-form-pay-rate").dialog({
+			autoOpen : false,
+			height : 300,
+			width : "60%",
+			modal : false,             
+			close : function () {
+				dialog.find("form")[0].reset();
+			}
+		});
 	// dialog in tab4	
-	var dialog4 = $("#dialog-form-product-sale").dialog({
+	var dialog5 = $("#dialog-form-product-sale").dialog({
 			autoOpen : false,
 			height : 300,
 			width : 700,
@@ -116,6 +133,41 @@ function insertBatchDailyRecord()
 	$("#batch_input_form #submit").attr("class","hidden");
 	
 	return true;
+}
+
+// val: <select> input value of the employee 
+function get_profile_rec(val) 
+{
+	 
+	$.ajax({
+			//type: 'GET', //这行不用写
+			url: phpUrl+"getProfile.php",	
+			data: {userid: val},
+			dataType: "json"
+	})
+	.done(function (data)
+	{
+		//data = JSON.parse(data);// The JSON you are receiving is in string. You have to convert it into JSON object .
+		 
+		console.log(data);
+		console.log(data.img_html);
+		//$("#profile_rec").children().remove();		
+		//$("#profile_rec").append(data.img_html);
+		//$("#profile_rec img").attr({"class": "img-circle img-responsive", "style":"margin: 12 8;", "width":"42","height":"42"});
+		
+		
+		$("#branch_name").val(data.branch_id);
+		$("#depart_name_payrate").val(data.department);
+		$("#empID_rec").text(' (ID: #'+ data.user_id+')');
+		$("#pay_type").val(data.payType);
+		$("#pay_rate").val(data.payRate);
+		
+	})
+	.fail(function (data){
+		console.log("load pic fail.");		
+		console.log(data);
+	});
+	
 }
 
 /**tab1 dialog validate
@@ -441,22 +493,12 @@ var records = [] , records_raw=[];
 
 //--------------------------------------Tab1 主体显示表格------------------------------------------------------------------------
 $(function () {
-	var spreadsheetID = "1nH7lkY7RnFv_l8u0nL9gsrs4_rwODBQiTiuD2FF0GBo";
-
-	//myurl = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
-	//var phpurl = $(location).attr('href');	
-   // phpurl = phpUrl+"dailyRecords.php";
-	var  orderIdClicked="";
-    //var records = [];
-	
-		
+	 
+	var  orderIdClicked="";   
 	
 	jsGrid.loadStrategies.DirectLoadingStrategy.prototype.finishDelete = function (deletedItem, deletedItemIndex) {
 		console.log(deletedItem);
 		console.log(deletedItem.Timestamp); //
-
-		//mark this item as deleted in spreadsheet
-		// code here:
 
 		var grid = this._grid;
 		grid.option("data").splice(deletedItemIndex, 1);
@@ -570,7 +612,7 @@ $(function () {
 							{
 								"id": r.id,
 								"date" : r.date,
-								"shop_name" : r.shop_name,
+								"shop_name" : r.name, // branch name
 								"title" : r.title,
 								"user_id": r.employee_id, 
 								"display_name" : r.display_name,
@@ -578,7 +620,7 @@ $(function () {
 								"end_time" : r.end_time,
 								"wk_hours" : r.wk_hours,
 								"min_hrs" : r.min_hrs,
-								"pay_rate" : r.pay_rate,
+								"pay_rate" : r.pay_rate, // 这里要判断是那个rate，又可能rate已经改了。
 								"pay_type" : r.pay_type,
 								"turnover" : r.turnover,
 								"sales"    : stl.toFixed(2),							
@@ -1173,16 +1215,7 @@ function get_sales_rate()
 			return ((aDate < bDate) ? 1 : ((aDate > bDate) ? -1 : 0)); //逆序排序	
 		});
 		sales_rate = data;
-		/*
-		$(data).each(function (index){
-			if(dt>=data[index].effective_date)
-			{
-				rate= data[index].sales_rate;
-				 
-				return false;
-			}
-		});
-		*/
+		 
 		
 		console.log("sales_rate值: ");
 		
@@ -1330,11 +1363,44 @@ function show_breakdown()
 			if(records_filtered[i].if_paid==='No') //注意如果paid==Yes，是没有后面计算的
 			{
 				//1.基本工资计算
+				// 这里需要判断下有没有pay rate 的修改记录。
+				// 如果有，用最新的pay rate 计算。如果没有，用一开始设置的payrate,即 records_filtered[i].pay_rate
+				var payRate = records_filtered[i].pay_rate;
 				if(records_filtered[i].pay_type==="daily")
-				{
-					wage1_sum += 1 * parseFloat(records_filtered[i].pay_rate);
+				{					 
+					pay_rec.sort(function(a,b){
+						var aDate = a.effective_date ; 
+						var bDate = b.effective_date; 						
+						return ((aDate < bDate) ? 1 : ((aDate > bDate) ? -1 : 0)); //按日期 逆序排序
+									
+					});
+					
+					console.log("pay rec:");
+					console.log(pay_rec);
+					$(pay_rec).each(function (index)
+					{
+						 
+						if((pay_rec[index].pay_type=== 'daily') && (records_filtered[i].shop_name === pay_rec[index].branch_name) 
+							&& (records_filtered[i].title === pay_rec[index].department_name)
+							&& (records_filtered[i].user_id === pay_rec[index].employee_id))
+						{
+							if(records_filtered[i].date >= pay_rec[index].effective_date)
+							{
+								payRate = pay_rec[index].pay_rate;
+								console.log("因为找到 pay_rec ");
+								
+								return false;//跳出循环，因为找到了。
+							}
+						}
+						else{
+							;
+						}
+					});
+					
+					
+					wage1_sum += parseFloat(payRate); // payRate x 1 等于没乘，所以直接赋值
 					days++;
-					basic_wage_breakdown += "£"+ records_filtered[i].pay_rate + " + ";//为了显示用，不参与计算
+					basic_wage_breakdown += "£"+ payRate + " + ";//为了显示用，不参与计算
 				}
 				else if(records_filtered[i].pay_type==="hourly")//小时工的情况比较复杂：有可能即做小时工，又做massage
 				{
@@ -1747,9 +1813,12 @@ function saveBranchManager()
 	});
 }
 
+var pay_rec = []; //记录今后修改的 pay rate
+
 $().ready(function () {
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	  $("#jsGridTransaction").jsGrid("refresh");
+	  $("#jsGrid_pay_rate").jsGrid("refresh"); //刷新Settings tab的 pay rate 表格
 	  $("#jsGrid_prd_sale_rate").jsGrid("refresh"); //刷新Settings tab的 product sales rate 表格
 	  $("#jsGrid_bonus_threshold").jsGrid("refresh"); //刷新Settings tab的bonus threshold 表格
 	  
@@ -1958,7 +2027,269 @@ $().ready(function () {
         var $cb = $(this);
         $("#jsGridTransaction").jsGrid("option", $cb.attr("id"), $cb.is(":checked"));
     });
-	/****************************************************Tab2 grid end**********************************************************/
+    /****************************************************Tab2 grid end**********************************************************/
+	
+	/**************************************************** Tab4 Settings Pay Rate **********************************************************/	
+	$("#jsGrid_pay_rate").jsGrid({
+		height : "auto",
+		width : "100%",
+
+		//filtering: true,
+		sorting : true,
+		//editing: true,
+		//inserting: true,
+		/**/
+		autoload : true,
+		pagerContainer : "#externalPager_pay_rate",
+		paging : true,
+		//pageLoading: true,
+		pageSize : 10,
+		pageIndex : 1,
+		pageButtonCount : 5,
+		/**/
+		rowClick: function(args) { 
+
+			//console.log(args.item.OrderID);
+			orderIdClicked=args.item.OrderID;
+			return args.item.OrderID;
+		},
+		deleteConfirm : function (item) {
+			 
+			var msg="The entry:\n\n " +"#"+ item.id + ","+ item.display_name +","+ item.branch_name +","+ item.department_name + ", .... \n\n will be DELETED. \n Are you sure?";
+			var deleteFlag=0;
+			
+			var answer=confirm(msg);
+			if (answer==true)
+			{
+				//php delete a row in table in db
+				var tb="wp_shop_employee_payrate";
+				$.ajax({
+					type: "POST",
+					url: phpUrl+"deleteData.php",  
+					data: 
+					{
+						id: item.id,
+						table: tb 
+					}
+				 
+				})
+				.done(function(data) {	
+					deleteFlag=1;//表明已删除	
+					
+					console.log("delete done!");
+					return ("The entry has been Deleted.");
+				})
+				.fail(function(xhr, status, error)
+				{
+					
+					console.log("cannot delete  in db");												 
+					console.log(xhr.responseText);
+					console.log(status);
+					console.log(error);
+				});	
+			    
+				 
+			}
+			else
+			{
+				location.reload(false);//刷新页面
+				return ("Canceled. Nothing happened.") ;		
+				
+			}			
+			
+		},
+	 
+		//db below here----------------------------
+		controller : {
+			loadData : function () {
+				var d = $.Deferred();			 
+           
+				//var pay_rec = [];
+			 
+				var querysql="select * from wp_shop_employee_payrate";
+				var querysql="select \
+					usr.display_name, \
+					loc.name branch_name, \
+					dept.title department_name, \
+					emp_pr.id, emp_pr.employee_id, emp_pr.pay_rate, emp_pr.pay_type, emp_pr.effective_date , emp_pr.ot_rate \
+					from \
+					wp_users usr, wp_erp_company_locations loc, wp_erp_hr_depts dept, wp_shop_employee_payrate emp_pr \
+					where usr.id = emp_pr.employee_id \
+					and loc.id= emp_pr.branch_id \
+					and dept.id=emp_pr.depart_id";
+				
+				$.ajax({
+					type:'POST',
+					data: {'query':querysql},
+					url : phpUrl+"getData.php", // read wp_shop_bonus table  
+					dataType : "json"
+				})
+				.done(function (data) {
+					
+					var i = data.length;
+					
+					$(data).each(function () {
+						var r = data[--i]; //one entry//
+						console.log("employ history : "+r);
+						
+						var row = {
+							"id" : r.id,
+							"employee_id" : r.employee_id,
+							"display_name" : r.display_name,
+							"branch_name" : r.branch_name,
+							"department_name" : r.department_name,						
+							"pay_rate" :  r.pay_rate,
+							"pay_type" : r.pay_type,
+							
+							"ot_rate" : r.ot_rate,
+							"effective_date" :  r.effective_date
+						};						 
+						pay_rec.push(row); 
+						
+					});
+					pay_rec.sort(function(a,b){
+						var aId = a.employee_id ; 
+						var bId = b.employee_id; 						
+						return ((aId < bId) ? -1 : ((aId > bId) ? 1 : 0)); //顺序排序
+									
+					});
+					d.resolve(pay_rec);					
+				})
+				.fail(function(data){
+					console.log("jsGrid pay rate   load   fail.");
+					console.log(data);
+				});
+				return d.promise();
+			}
+		},
+		//db above ----------------------------
+
+		fields : [
+			{
+				name : "id",
+				title: "Entry ID",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : true,
+				editing: false,
+				width : "auto"
+			},
+			{
+				name : "employee_id",
+				title: "Employee ID",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : true,
+				editing: false,
+				width : "auto"
+			},
+			{
+				name : "display_name", // 对应数组row中的index
+				title : "Employee Name",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+				
+			},
+			{
+				name : "branch_name", // 对应数组row中的index
+				title : "Branch",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+				
+			}, 			
+			{
+				name : "department_name",
+				title : "Department",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},	
+			{
+				name : "effective_date",
+				title : "Effective Date",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},
+			{
+				name : "pay_type",
+				title : "Pay Type",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},
+			{
+				name : "pay_rate",
+				title : "Pay Rate",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},				
+			{
+				name : "ot_rate",
+				title : "OT Rate",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},			
+		
+			{
+				type : "control",
+				editButton : false,
+				deleteButton : true,//为了展示，先暂时关闭
+				//deleteButton : false,//为了展示，先暂时关闭
+				clearFilterButton : false,
+				modeSwitchButton : false,
+
+				headerTemplate : function () {
+					return $("<span/>").attr("class", "icon-plus") //tab2
+					.css({
+						'font-size' : "1em",
+						'color' : "#4CAF50" //it's green
+					}).hover(
+						function () {
+							$(this).css({
+								'font-size' : "1.2em",
+								'color' : "#00cc00" //it's green
+							});
+						},
+						function () {
+							$(this).css({
+								'font-size' : "1em",
+								'color' : "#4CAF50" //it's green
+						});
+					}).on("click", function () {
+						$("#dialog-form-pay-rate").dialog().dialog("open");
+						showDetailsDialog("Add", {});
+					});
+				}
+			}
+				
+
+		]
+
+	});	
+	
+	/**************************************************** Tab4 Settings Pay Rate end **********************************************************/
+	
 	
 	/**************************************************** Tab4 Settings Product Sales Rate **********************************************************/
 	$("#jsGrid_prd_sale_rate").jsGrid({
@@ -2163,8 +2494,9 @@ $().ready(function () {
 	
 	/**************************************************** Tab4 Settings Product Sales Rate end **********************************************************/
 	
-	var bonus_rec = [];//存放bonus threshold , threshold rate 
+	
 	/**************************************************** Tab4 Settings Bonus **********************************************************/
+	var bonus_rec = [];   //存放bonus threshold , threshold rate 
 	$("#jsGrid_bonus_threshold").jsGrid({
 		height : "auto",
 		width : "100%",
