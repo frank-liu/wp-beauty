@@ -12,7 +12,7 @@
 	$mv = $wpdb->get_row($query);// 
 	
 	//query table : wp_erp_hr_employees
-	$query="SELECT branch_id, department, pay_type, pay_rate FROM wp_erp_hr_employees emp WHERE emp.user_id=" . $user_id;
+	$query="SELECT branch_id, department, pay_type, pay_rate,ot_rate,min_hrs FROM wp_erp_hr_employees emp WHERE emp.user_id=" . $user_id;
 	$pr = $wpdb->get_row($query);//
     $photo="";
 	if($mv)
@@ -38,6 +38,8 @@
 	'user_id'=>$mv->user_id, 
 	'payRate'=>$pr->pay_rate,
 	'payType'=>$pay_type,
+	'ot_rate'=>$pr->ot_rate,
+	'min_hrs'=>$pr->min_hrs,
 	'branch_id'=>$pr->branch_id,
 	'department'=>$pr->department);	
 	//print_r(array_values($arr)); // What's the FUCK!!!!!!!!!!!!!!  血一样的教训。print_r 会把输出带到json输出结果里。没事别开着，调试时可以用。

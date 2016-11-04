@@ -4272,3 +4272,355 @@
 )
 
 
+4-Nov-2016 16:01:15 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 30
+    [employee_id] => 5
+    [branch_id] => 1
+    [depart_id] => 2
+    [effective_date] => 2016-10-17
+    [pay_type] => daily
+    [pay_rate] => 67.67
+    [ot_rate] => 0.00
+)
+
+
+
+
+4-Nov-2016 18:51:37 UTC,  Name: frank, count(gr1)= 1
+
+4-Nov-2016 18:51:37 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 90.00
+
+
+
+4-Nov-2016 18:56:52 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-18
+    [branch_id] => 1
+    [depart_id] => 2
+    [employee_id] => 5
+    [pay_rate] => 90.00
+    [pay_type] => daily
+    [min_hrs] => 1.00
+    [ot_rate] => 8.01
+)
+
+
+4-Nov-2016 18:56:52 UTC,  Name: frank, count(gr1)= 2
+
+4-Nov-2016 18:56:52 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 2
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-18
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.01
+            [min_hrs] => 1.00
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 90.00
+
+
+
+4-Nov-2016 18:56:52 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 2
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-18
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.01
+            [min_hrs] => 1.00
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 90.00
+
+
+
+4-Nov-2016 19:00:42 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 2
+    [employee_id] => 5
+    [branch_id] => 1
+    [depart_id] => 2
+    [effective_date] => 2016-10-18
+    [pay_type] => daily
+    [pay_rate] => 90.00
+    [ot_rate] => 8.01
+    [min_hrs] => 1.00
+)
+
+
+
+
+4-Nov-2016 19:01:05 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-18
+    [branch_id] => 1
+    [depart_id] => 2
+    [employee_id] => 5
+    [pay_rate] => 90.00
+    [pay_type] => daily
+    [min_hrs] => 1.11
+    [ot_rate] => 8.21
+)
+
+
+4-Nov-2016 19:01:05 UTC,  Name: frank, count(gr1)= 2
+
+4-Nov-2016 19:01:05 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 3
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-18
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.21
+            [min_hrs] => 1.11
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 90.00
+
+
+
+4-Nov-2016 19:01:05 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 3
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-18
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.21
+            [min_hrs] => 1.11
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 90.00
+
+
+
+4-Nov-2016 19:13:59 UTC,  Name: frank, User ID: 1, Delete stdClass Object
+(
+    [id] => 3
+    [employee_id] => 5
+    [branch_id] => 1
+    [depart_id] => 2
+    [effective_date] => 2016-10-18
+    [pay_type] => daily
+    [pay_rate] => 90.00
+    [ot_rate] => 8.21
+    [min_hrs] => 1.11
+)
+
+
+
+
+4-Nov-2016 19:16:43 UTC,  Name: frank,  Insert: Array
+(
+    [effective_date] => 2016-10-17
+    [branch_id] => 1
+    [depart_id] => 2
+    [employee_id] => 5
+    [pay_rate] => 80.01
+    [pay_type] => daily
+    [min_hrs] => 3.1
+    [ot_rate] => 10.00
+)
+
+
+4-Nov-2016 19:16:43 UTC,  Name: frank, count(gr1)= 2
+
+4-Nov-2016 19:16:43 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 4
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-17
+            [pay_type] => daily
+            [pay_rate] => 80.01
+            [ot_rate] => 10.00
+            [min_hrs] => 3.10
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 80.01
+
+
+
+4-Nov-2016 19:16:43 UTC,  Name: frank, Array
+(
+    [0] => stdClass Object
+        (
+            [id] => 4
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-17
+            [pay_type] => daily
+            [pay_rate] => 80.01
+            [ot_rate] => 10.00
+            [min_hrs] => 3.10
+        )
+
+    [1] => stdClass Object
+        (
+            [id] => 1
+            [employee_id] => 5
+            [branch_id] => 1
+            [depart_id] => 2
+            [effective_date] => 2016-10-20
+            [pay_type] => daily
+            [pay_rate] => 90.00
+            [ot_rate] => 8.50
+            [min_hrs] => 0.00
+        )
+
+)
+---> Update:  pay_rate to 90.00
+
+
+
+4-Nov-2016 20:49:56 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-19
+    [employee_id] => 4
+    [team_id] => 2
+    [start_time] => 08:00
+    [end_time] => 08:03
+    [wk_hours] => 
+    [ot_hours] => 0.01
+    [if_paid] => 0
+    [turnover] => 0.03
+    [sales] => 0.01,0.01,0.00
+    [pay_rate] => 7.00
+    [pay_type] => daily
+    [ot_rate] => 0.00
+    [min_hrs] => 5.00
+)
+
+
+4-Nov-2016 20:49:56 UTC,  Name: frank,  Insert: Array
+(
+    [shop_id] => 1
+    [date] => 2016-10-19
+    [employee_id] => 3
+    [team_id] => 2
+    [start_time] => 08:01
+    [end_time] => 08:03
+    [wk_hours] => 
+    [ot_hours] => 0.01
+    [if_paid] => 0
+    [turnover] => 0.02
+    [sales] => 0.01,0.01,0.01
+    [pay_rate] => 80.00
+    [pay_type] => daily
+    [ot_rate] => 0.00
+    [min_hrs] => 3.50
+)
+
+

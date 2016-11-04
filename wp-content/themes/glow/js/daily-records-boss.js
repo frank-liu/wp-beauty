@@ -161,6 +161,8 @@ function get_profile_rec(val)
 		$("#empID_rec").text(' (ID: #'+ data.user_id+')');
 		$("#pay_type").val(data.payType);
 		$("#pay_rate").val(data.payRate);
+		$("#ot_rate").val(data.ot_rate);
+		$("#min_hrs").val(data.min_hrs);
 		
 	})
 	.fail(function (data){
@@ -626,6 +628,8 @@ $(function () {
 								"sales"    : stl.toFixed(2),							
 								//"threshold" : r.bonus_threshold+";"+r.bonus_threshold_rate,
 								"wage" : "£"+r.wage,
+								"ot_hours": r.ot_hours,
+								"ot_rate": r.ot_rate,
 								
 								"if_paid": paidFlag //show yes or no later in js script below						
 								 
@@ -649,8 +653,7 @@ $(function () {
 		
 	 
 		fields : 
-		[
-			 
+		[ 
 			{
 				name : "date",
 				css:"print-title",
@@ -706,16 +709,17 @@ $(function () {
 				filtering : false 
 			},
 			{
-				name : "pay_rate",
-				title: "Pay Rate",
+				name : "min_hrs",
+				title: "Mini Hour",
 				css:"print-title",
-				width : "70",
+				width : "auto",
 				type : "text",
+				editing: false,
 				align : "center",
-				autosearch : true,
+				autosearch : false,
 				//width : "auto",
 				filtering : false 
-			},			
+			},
 			{
 				name : "pay_type",
 				title: "Pay Type",
@@ -727,6 +731,37 @@ $(function () {
 				//width : "auto",
 				filtering : false 
 			},
+			{
+				name : "pay_rate",
+				title: "Pay Rate",
+				css:"print-title",
+				width : "70",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				//width : "auto",
+				filtering : false 
+			},			
+			{
+				name : "ot_rate",
+				title: "OT Rate",
+				css:"print-title",			
+				type : "text",
+				align : "center",
+				autosearch : true,
+				width : "auto",
+				filtering : false 
+			},			
+			{
+				name : "ot_hours",
+				title: "OT Hours",
+				css:"print-title",			
+				type : "text",
+				align : "center",
+				autosearch : true,
+				width : "auto",
+				filtering : false 
+			},	
 			{
 				name : "sales",
 				title: "Product Sales",
@@ -2029,7 +2064,7 @@ $().ready(function () {
     });
     /****************************************************Tab2 grid end**********************************************************/
 	
-	/**************************************************** Tab4 Settings Pay Rate **********************************************************/	
+	/**************************************************** Tab4 Settings Pay Rate, OT Rate, Min Hour **********************************************************/	
 	$("#jsGrid_pay_rate").jsGrid({
 		height : "auto",
 		width : "100%",
@@ -2111,7 +2146,7 @@ $().ready(function () {
 					usr.display_name, \
 					loc.name branch_name, \
 					dept.title department_name, \
-					emp_pr.id, emp_pr.employee_id, emp_pr.pay_rate, emp_pr.pay_type, emp_pr.effective_date , emp_pr.ot_rate \
+					emp_pr.id, emp_pr.employee_id, emp_pr.pay_rate, emp_pr.pay_type, emp_pr.effective_date , emp_pr.ot_rate, emp_pr.min_hrs \
 					from \
 					wp_users usr, wp_erp_company_locations loc, wp_erp_hr_depts dept, wp_shop_employee_payrate emp_pr \
 					where usr.id = emp_pr.employee_id \
@@ -2142,6 +2177,7 @@ $().ready(function () {
 							"pay_type" : r.pay_type,
 							
 							"ot_rate" : r.ot_rate,
+							"min_hrs" : r.min_hrs,
 							"effective_date" :  r.effective_date
 						};						 
 						pay_rec.push(row); 
@@ -2156,7 +2192,7 @@ $().ready(function () {
 					d.resolve(pay_rec);					
 				})
 				.fail(function(data){
-					console.log("jsGrid pay rate   load   fail.");
+					console.log("jsGrid pay rate load fail.");
 					console.log(data);
 				});
 				return d.promise();
@@ -2165,7 +2201,7 @@ $().ready(function () {
 		//db above ----------------------------
 
 		fields : [
-			{
+			/*{
 				name : "id",
 				title: "Entry ID",
 				type : "text",
@@ -2174,7 +2210,7 @@ $().ready(function () {
 				sorting : true,
 				editing: false,
 				width : "auto"
-			},
+			},*/
 			{
 				name : "employee_id",
 				title: "Employee ID",
@@ -2249,7 +2285,16 @@ $().ready(function () {
 				filtering : false,
 				sorting : true,
 				width : "auto"
-			},			
+			},	
+			{
+				name : "min_hrs",
+				title : "Min Hour",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : true,
+				width : "auto"
+			},
 		
 			{
 				type : "control",
@@ -2415,7 +2460,7 @@ $().ready(function () {
 		//db above ----------------------------
 
 		fields : [
-			{
+			/*{
 				name : "entry_id",
 				title: "Entry ID",
 				type : "text",
@@ -2424,7 +2469,7 @@ $().ready(function () {
 				sorting : true,
 				editing: false,
 				width : "auto"
-			},
+			},*/
 			{
 				name : "product_name", // 对应数组row中的index
 				title : "Product Name",
@@ -2635,7 +2680,7 @@ $().ready(function () {
 		//db above ----------------------------
 
 		fields : [
-			{
+			/*{
 				name : "id",
 				title: "Entry ID",
 				type : "text",
@@ -2644,7 +2689,7 @@ $().ready(function () {
 				sorting : true,
 				editing: false,
 				width : "auto"
-			},
+			},*/
 			{
 				name : "employee_id", // 对应数组row中的index
 				title : "Employee Name",

@@ -26,23 +26,26 @@
 			'depart_id' => $_POST['dep_name'],
 			'employee_id' => $_POST['emp_name'],
 			'pay_rate' => $_POST['pay_rate'], 
-			'pay_type'=> $pay_type
+			'pay_type'=> $pay_type,
+			'min_hrs'=> $_POST['min_hrs'],
+			'ot_rate'=> $_POST['ot_rate']
 			 
 	);
-	//如果存在相同记录，不做任何事。
+	//如果存在相同记录。
 	$query="select id from ".$table." Where effective_date =" . "'".$_POST['effective_date'] ."'"
 	. " AND "."branch_id=" . $_POST['branch_name']." AND "."depart_id=".$_POST['dep_name']
 	. " AND "."employee_id=" .  $_POST['emp_name'];
-	//." AND "."pay_type ="."'".$pay_type."'";
-	//. " AND "."pay_rate =" .  $_POST['pay_rate'];
-
+ 
 	$gr = $wpdb->get_row($query);
 	if($gr)
-	{//只更新pay rate 和 pay_type 即可
+	{//只更新pay rate 和 pay_type 还有min_hrs，ot_rate 即可
 		$wpdb->query(
 			"
 			UPDATE wp_shop_employee_payrate  
-			SET pay_rate =" . $_POST['pay_rate'] . " , pay_type =" . $pay_type .
+			SET pay_rate =" . $_POST['pay_rate'] . 
+			" , pay_type =" . $pay_type .
+			" , min_hrs =" . $_POST['min_hrs'] .
+			" , ot_rate =" . $_POST['ot_rate'] .
 			" WHERE id =". $gr->id 
 		);
 		$query="select * from wp_shop_employee_payrate ORDER BY effective_date ASC ";
@@ -62,6 +65,8 @@
 				"
 				UPDATE wp_shop_daily_records 
 				SET pay_rate =" . $value->pay_rate .
+				" , min_hrs =" . $value->min_hrs .
+				" , ot_rate =" . $value->ot_rate .
 				" WHERE shop_id =". $value->branch_id .
 				"	AND team_id=". $value->depart_id  .
 				"	AND employee_id=". $value->employee_id  .
@@ -80,6 +85,8 @@
 				"
 				UPDATE wp_shop_daily_records 
 				SET pay_rate =" . $value->pay_rate .
+				" , min_hrs =" . $value->min_hrs .
+				" , ot_rate =" . $value->ot_rate .
 				" WHERE shop_id =". $value->branch_id .
 				"	AND team_id=". $value->depart_id  .
 				"	AND employee_id=". $value->employee_id  .
@@ -100,7 +107,7 @@
 		exit;
 	}
 	else
-	{
+	{//如果不存在相同记录，则插入一条。并更新表 daily_records里的pay_rate.
 		$wpdb->insert($table,$data_array);
 		//write into log
 		$origin=print_r($data_array,true);
@@ -108,24 +115,7 @@
 	    $log= $done;
 	    write_operation_log($log);
 		
-		/* //获取 wp_shop_employee_payrate 比当前有效期稍稍大的有效期。
-		$query="select * from ".$table." Where effective_date > " . "'". $_POST['effective_date'] ."'"
-		. " AND "."branch_id=" . $_POST['branch_name']." AND "."depart_id=".$_POST['dep_name']
-		. " AND "."employee_id=" .  $_POST['emp_name']." AND "."pay_type ="."'".$pay_type."'"
-		. " ORDER BY effective_date ASC ";
-		$gr1 = $wpdb->get_row($query);// 
-		if($gr1)
-		{
-			$date2=$gr1->effective_date;
-			write_operation_log($date2);
-		}
-		else{
-			$date2="2050-01-01"; //没有的话，赋一个很大的值
-			write_operation_log($date2);
-		} */
-		
-		/******/
-		//(2) 更新表 daily_records里的pay_rate		
+		//(2) 更新表 daily_records里的pay_rate	和ot_rate， min_hrs	
 		$query="select * from wp_shop_employee_payrate ORDER BY effective_date ASC ";
 		$gr1 = $wpdb->get_results($query);// 
 		$len= $wpdb->num_rows;
@@ -143,6 +133,8 @@
 				"
 				UPDATE wp_shop_daily_records 
 				SET pay_rate =" . $value->pay_rate .
+				" , min_hrs =" . $value->min_hrs .
+				" , ot_rate =" . $value->ot_rate .
 				" WHERE shop_id =". $value->branch_id .
 				"	AND team_id=". $value->depart_id  .
 				"	AND employee_id=". $value->employee_id  .
@@ -161,6 +153,8 @@
 				"
 				UPDATE wp_shop_daily_records 
 				SET pay_rate =" . $value->pay_rate .
+				" , min_hrs =" . $value->min_hrs .
+				" , ot_rate =" . $value->ot_rate .
 				" WHERE shop_id =". $value->branch_id .
 				"	AND team_id=". $value->depart_id  .
 				"	AND employee_id=". $value->employee_id  .

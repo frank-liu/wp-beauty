@@ -29,3 +29,37 @@
 [03-Nov-2016 16:26:24 UTC] PHP Notice:  Array to string conversion in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\insertPayRate.php on line 113
 [03-Nov-2016 23:40:56 UTC] WordPress database error Unknown column 'user_id' in 'field list' for query select user_id from wp_shop_daily_records where shop_id=4 AND team_id=2 AND employee_id=4 AND date=2016-11-03
 [03-Nov-2016 23:43:56 UTC] WordPress database error Unknown column 'user_id' in 'field list' for query select user_id from wp_shop_daily_records where shop_id=5 AND team_id=2 AND employee_id=5 AND date=2016-11-03
+[04-Nov-2016 18:14:17 UTC] PHP Warning:  mysqli_real_connect(): (HY000/2002): ����Ŀ����������ܾ����޷����ӡ�
+ in D:\xampp\htdocs\wp-beauty\wp-includes\wp-db.php on line 1529
+[04-Nov-2016 18:14:17 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in D:\xampp\htdocs\wp-beauty\wp-includes\wp-db.php on line 1559
+[04-Nov-2016 18:14:52 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\wp-beauty\wp-includes\Requests\Transport\cURL.php on line 436
+[04-Nov-2016 18:18:49 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in D:\xampp\htdocs\wp-beauty\wp-includes\update.php on line 306
+[04-Nov-2016 18:19:09 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\wp-beauty\wp-includes\Requests\Transport\cURL.php on line 436
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 22
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 38
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 39
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Undefined variable: pay_type in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 40
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 41
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 42
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 43
+[04-Nov-2016 18:33:09 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 44
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 22
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 38
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 39
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Undefined variable: pay_type in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 40
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 41
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 42
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 43
+[04-Nov-2016 18:33:11 UTC] PHP Notice:  Trying to get property of non-object in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\php\getProfile.php on line 44
+[04-Nov-2016 18:51:37 UTC] WordPress database error Unknown column 'daily' in 'field list' for query 
+			UPDATE wp_shop_employee_payrate  
+			SET pay_rate =90.00 , pay_type =daily , min_hrs =1.08 , ot_rate =8.10 WHERE id =1
+[04-Nov-2016 18:51:37 UTC] WordPress database error Unknown column 'min_hrs' in 'field list' for query 
+				UPDATE wp_shop_daily_records 
+				SET pay_rate =90.00 , min_hrs =1.08 , ot_rate =8.10 WHERE shop_id =1	AND team_id=2	AND employee_id=5	AND pay_type ='daily'	AND date >= '2016-10-20'
+[04-Nov-2016 18:56:52 UTC] WordPress database error Unknown column 'min_hrs' in 'field list' for query 
+				UPDATE wp_shop_daily_records 
+				SET pay_rate =90.00 , min_hrs =1.00 , ot_rate =8.01 WHERE shop_id =1	AND team_id=2	AND employee_id=5	AND pay_type ='daily'	AND date >= '2016-10-18'
+[04-Nov-2016 18:56:52 UTC] WordPress database error Unknown column 'min_hrs' in 'field list' for query 
+				UPDATE wp_shop_daily_records 
+				SET pay_rate =90.00 , min_hrs =0.00 , ot_rate =8.50 WHERE shop_id =1	AND team_id=2	AND employee_id=5	AND pay_type ='daily'	AND date >= '2016-10-20'

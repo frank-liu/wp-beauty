@@ -14,7 +14,7 @@
 	
 	
 	//在表 wp_shop_employee_payrate 里找到有效的值，赋值给 pay_rate 和 pay_type
-	$query="select pay_rate, pay_type from wp_shop_employee_payrate WHERE effective_date <=". $_POST['date'] 
+	$query="select pay_rate, pay_type, ot_rate, min_hrs from wp_shop_employee_payrate WHERE effective_date <=". $_POST['date'] 
 	. " AND "."branch_id=" . $_POST['shop_name']." AND "."depart_id=".$_POST['dep_name']
 	. " AND "."employee_id=" .  $_POST['emp_name'] 
 	. " ORDER BY effective_date DESC ";
@@ -24,11 +24,13 @@
 	{//在表 wp_shop_employee_payrate 里找到有效的值
 		$pay_rate=$gr->pay_rate;
 		$pay_type=$gr->pay_type;
+		$ot_rate=$gr->ot_rate;
+		$min_hrs=$gr->min_hrs;
 	}
 	else
 	{//找不到则用创建新员工时的值。
 		//用创建新员工时的默认值 
-		$query="select pay_rate, pay_type from wp_erp_hr_employees WHERE "
+		$query="select pay_rate, pay_type, ot_rate, min_hrs from wp_erp_hr_employees WHERE "
 		. " branch_id=" . $_POST['shop_name']
 		. " AND "."department = ".$_POST['dep_name']
 		. " AND "."user_id = " .  $_POST['emp_name'];
@@ -37,10 +39,14 @@
 		{//在表 wp_erp_hr_employees 里找初始默认的值
 			$pay_rate=$gr->pay_rate;
 			$pay_type=$gr->pay_type;
+			$ot_rate=$gr->ot_rate;
+			$min_hrs=$gr->min_hrs;
 		}
 		else{//不存在，取0. 
 			$pay_rate=0;
 			$pay_type="";
+			$ot_rate=0;
+			$min_hrs=0;
 		}
 	}
 	
@@ -56,6 +62,9 @@
 			
 			'pay_rate' => $pay_rate,  
 			'pay_type' => $pay_type, 
+			'ot_rate' => $ot_rate, 
+			'min_hrs' => $min_hrs, 
+			
 			'sales'=> $prd_sales, //用，分隔每个产品售出的价格。例如：10,20,5			
 			
 			//'wage'=> $_POST['wages'], 
@@ -63,7 +72,7 @@
 			'turnover'=> $_POST['turnover']	//db field  done		
 	);
     
-	// 同一天不能插入2条相同记录。这里要保护下。11-03
+	// 同一天不能插入2条相同记录。
 	$query="select user_id from wp_shop_daily_records"
 	." where shop_id=" . $_POST['emp_name']
 	." AND team_id=". $_POST['dep_name']
@@ -85,27 +94,6 @@
 		
 		header("Location: {$_SERVER['HTTP_REFERER']}"); // return to request page.
 	}
-
-	
-	/* //Must check data validation here
-	$query="select user_id from wp_erp_hr_employees where user_id=" . $_POST['emp_name']; //$_POST['emp_name'] actually is the employee id .
-	$gr = $wpdb->get_row($query);// 
-	
-	//if matches, then insert data into db
-	if($gr->user_id==$_POST['emp_name']){
-		$wpdb->insert($table,$data_array);
-		
-		//write into log
-		$origin=print_r($data_array,true);
-		$done=" Insert: " . $origin ;
-	    $log= $done;
-	    write_operation_log($log);
-		
-		header("Location: {$_SERVER['HTTP_REFERER']}"); // return to request page.
-	}
-	else{//错误处理
-		print_r ("cannot insert into wp_shop_daily_records");
-	} */
 	
     exit;
 ?>

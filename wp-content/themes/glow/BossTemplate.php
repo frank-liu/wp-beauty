@@ -125,10 +125,10 @@ global $wpdb, $wp;
  
   </br>
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Salary Calculator <span class="icon-calculator" style="font-size:1.5em"></span></a></li>
-    <li><a data-toggle="tab" href="#menu2">Transactions Check <span class="icon-banknote" style="font-size:1.5em"></span></a></li>
-    <li><a data-toggle="tab" href="#menu3">Charts <span class="icon-stats-dots" style="font-size:1.5em"></span></a></li>
-	<li><a data-toggle="tab" href="#menu4">Settings <span class="icon-equalizer" style="font-size:1.5em"></span></a></li>
+    <li class="active"><a data-toggle="tab" href="#home">Calculator <span class="icon-calculator" style="font-size:1.5em"></span></a></li>
+    <li><a data-toggle="tab" href="#menu2">Transaction <span class="icon-banknote" style="font-size:1.5em"></span></a></li>
+    <li><a data-toggle="tab" href="#menu3">Chart <span class="icon-stats-dots" style="font-size:1.5em"></span></a></li>
+	<li><a data-toggle="tab" href="#menu4">Setting <span class="icon-equalizer" style="font-size:1.5em"></span></a></li>
 	<li><a data-toggle="tab" href="#menu7">Manual <span class="icon-question-circle" style="font-size:1.5em"></span></a></li>
   </ul>
 
@@ -564,7 +564,7 @@ global $wpdb, $wp;
 							<input type="date" class="form-control blue" id="effective_date" name="effective_date" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
 						</div>
 						
-						<div class="col-sm-4">
+						<div class="col-sm-2">
 							<label for="pay_type">Pay Type</label>
 							 <select class="form-control" style="text-transform: capitalize;" id="pay_type" name="pay_type"   required>
 								<option value="1">hourly</option>
@@ -574,11 +574,18 @@ global $wpdb, $wp;
 							 </select>
 						</div>	
 						
-						<div class="col-sm-4">
+						<div class="col-sm-2">
 							<label for="pay_rate">Pay Rate</label>
 							<input type="number" name="pay_rate"  value='0.00' step="0.01" min="0"  placeholder='0.00' class="form-control blue" id="pay_rate" required>
 						</div> 
-						
+						<div class="col-sm-2">
+							<label for="ot_rate">OT Rate</label>
+							<input type="number" name="ot_rate"  value='0.00' step="0.01" min="0"  placeholder='0.00' class="form-control blue" id="ot_rate" required>
+						</div> 
+						<div class="col-sm-2">
+							<label for="min_hrs">Min Hour</label>
+							<input type="number" name="min_hrs"  value='0.00' step="0.01" min="0"  placeholder='0.00' class="form-control blue" id="min_hrs" required>
+						</div> 
 						 
 						
 					</div>	<br/>

@@ -93,7 +93,7 @@
 				$sales = substr($sales, 0, -1); //remove last comma  substr($string, 0, -1);
 				$data['sales'] = $sales;
 				$sales="";
-				echo "insert into db <br />\n";
+				//echo "insert into db <br />\n";
 				print_r($data);
 				
 				//Must check data validation here
@@ -103,7 +103,46 @@
 				
 				
 				//if matches, then insert data into db
-				if($gr->user_id==$data['employee_id']){
+				if($gr->user_id==$data['employee_id'])
+				{
+					//找到合适的 pay_type, pay_rate, min_hrs, ot_rate 值，赋值给$data					
+					$query="select pay_rate, pay_type, ot_rate, min_hrs from wp_shop_employee_payrate WHERE effective_date <=". $data['date'] 
+					. " AND "."branch_id=" . $data['shop_id']." AND "."depart_id=".$data['team_id']
+					. " AND "."employee_id=" .  $data['employee_id'] 
+					. " ORDER BY effective_date DESC ";
+					$gr = $wpdb->get_row($query);// 
+					
+					if($gr)
+					{//在表 wp_shop_employee_payrate 里找到有效的值
+						$data['pay_rate']=$gr->pay_rate;
+						$data['pay_type']=$gr->pay_type;
+						$data['ot_rate']=$gr->ot_rate;
+						$data['min_hrs']=$gr->min_hrs;
+					}
+					else
+					{//找不到则用创建新员工时的值。
+						//用创建新员工时的默认值 
+						$query="select pay_rate, pay_type,ot_rate, min_hrs from wp_erp_hr_employees WHERE "
+						. " branch_id=" . $data['shop_id']
+						. " AND "."department = ".$data['team_id']
+						. " AND "."user_id = " .  $data['employee_id'];
+						$gr = $wpdb->get_row($query);//
+						if($gr)
+						{//在表 wp_erp_hr_employees 里找初始默认的值
+							$data['pay_rate']=$gr->pay_rate;
+							$data['pay_type']=$gr->pay_type;
+							$data['ot_rate']=$gr->ot_rate;
+							$data['min_hrs']=$gr->min_hrs;
+						}
+						else{//不存在，取0. 
+							$data['pay_rate']=0;
+							$data['pay_type']="";
+							$data['ot_rate']=0;
+							$data['min_hrs']=0;
+						}
+					}
+					//找到合适的 pay_type, pay_rate, min_hrs, ot_rate 值，赋值给$data
+					
 					$wpdb->insert($table,$data);
 					
 					//write into log
@@ -111,8 +150,7 @@
 					$done=" Insert: " . $origin ;
 					$log= $done;
 					write_operation_log($log);
-					
-					//header("Location: {$_SERVER['HTTP_REFERER']}"); // return to request page.
+	 
 					header("Location: {$_SERVER['HTTP_REFERER']}"); // return to request page.
 					
 					//header("Refresh:0;"); // return to request page.
@@ -129,8 +167,6 @@
 		}		
 	}
 
-	
-	
     exit;
 ?>
 
