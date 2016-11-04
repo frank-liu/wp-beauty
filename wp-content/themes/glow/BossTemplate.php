@@ -280,7 +280,7 @@ global $wpdb, $wp;
 	<div id="menu4" class="tab-pane fade">
       
 	  <!-- Set Hourly/Daily rate  --->
-	  <h4>Pay Rate </h4>
+	  <h4>Pay Rate & Type </h4>
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
 				<div id="jsGrid_pay_rate"></div>

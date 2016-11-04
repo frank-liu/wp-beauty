@@ -214,6 +214,26 @@
                             'options' => array( '-1' => __( '- Select -', 'erp' ) ) + erp_hr_get_pay_type()
                         ) ); ?>
                     </li>
+					
+					<li><!--add by frank -->
+                        <?php erp_html_form_input( array(
+                            'label'   => __( 'OT Rate', 'erp' ),
+                            'name'    => 'work[ot_rate]',
+                            'value'   => '{{ data.work.ot_rate }}',
+							'required' => true,
+                            'type'    => 'text'
+                        ) ); ?>
+                    </li>
+					
+					<li><!--add by frank -->
+                        <?php erp_html_form_input( array(
+                            'label'   => __( 'Mini Hours', 'erp' ),
+                            'name'    => 'work[min_hrs]',
+                            'value'   => '{{ data.work.min_hrs }}',	
+							//'required' => true,							
+                            'type'    => 'text'
+                        ) ); ?>
+                    </li>
 
                 <# } #>
 

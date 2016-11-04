@@ -125,6 +125,8 @@ class Employee {
                 'reporting_to'  => 0,
                 'pay_rate'      => '',
                 'pay_type'      => '',
+                'ot_rate'       => '', //add by frank
+                'min_hrs'       => '', //add by frank
                 'type'          => '',
                 'status'        => '',
             ),
@@ -626,17 +628,21 @@ class Employee {
      *
      * @return void
      */
-    public function update_compensation( $rate = 0, $type = '', $reason = '', $date = '', $comment = '' ) {
+    public function update_compensation( $rate = 0, $ot_rate, $min_hrs, $type = '', $reason = '', $date = '', $comment = '' ) {
         global $wpdb;
 
         $wpdb->update( $wpdb->prefix . 'erp_hr_employees', array(
             'pay_rate'    => $rate,
-            'pay_type'    => $type
+            'pay_type'    => $type,
+            'ot_rate'    => $ot_rate,
+            'min_hrs'    => $min_hrs
         ), array(
             'user_id'     => $this->id,
         ), array(
-            '%d',
-            '%s'
+            '%.2f', //'%d',
+            '%s',
+			'%.2f', //'%d',
+			'%.2f'  //'%d',
         ) );
 
         // add in history

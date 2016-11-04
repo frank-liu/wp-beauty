@@ -45,6 +45,7 @@ function erp_hr_employee_create( $args = array() ) {
             'reporting_to'  => 0,
             'pay_rate'      => '',
             'pay_type'      => '',
+            'ot_rate'       => '', //frank
             'type'          => '',
             'status'        => '',
         ),
@@ -140,7 +141,7 @@ function erp_hr_employee_create( $args = array() ) {
         // update compensation
         if ( ! empty( $work['pay_rate'] ) ) {
             $pay_type = ( ! empty( $work['pay_type'] ) ) ? $work['pay_type'] : 'monthly';
-            $employee->update_compensation( $work['pay_rate'], $pay_type, '', $hiring_date );
+            $employee->update_compensation( $work['pay_rate'],$work['ot_rate'], $work['min_hrs'], $pay_type, '', $hiring_date );
         }
 
         // update job info
