@@ -76,6 +76,10 @@ global $wpdb, $wp;
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="<?php echo get_site_url(); ?>/wp-content/themes/glow/js/daily-records-boss.js" type="text/javascript"></script>
   <script src="<?php echo get_site_url(); ?>/wp-content/themes/glow/js/jsgrid-1.4.1/jsgrid.min.js" type="text/javascript"></script>
+  <!--Print plugin--->
+  <link type="text/css" rel="stylesheet" href="<?php echo get_site_url(); ?>/wp-content/themes/glow/js/PrintArea/css/jquery.printarea.css" />                <!-- Y : rel is stylesheet and media is in [all,print,empty,undefined] -->
+   
+  <script src="<?php echo get_site_url(); ?>/wp-content/themes/glow/js/PrintArea/js/jquery.printarea.js" type="text/javascript"></script>
 	<!--My css, js link End-->
 </head>
 
@@ -103,6 +107,7 @@ global $wpdb, $wp;
 					else 
 						echo "";
 				?>
+				<a href="<?php echo get_dashboard_url();?> "><span class="icon-dashboard" style="color: #337ab7;" title="DashBoard"></span></a>
 				<?php echo  $current_user->display_name ?>
 				<a href="<?php echo wp_logout_url( get_permalink() ); ?>"><span class="icon-exit" title="Logout" ></span></a>
 			  </h2>
@@ -127,7 +132,7 @@ global $wpdb, $wp;
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Calculator <span class="icon-calculator" style="font-size:1.5em"></span></a></li>
     <li><a data-toggle="tab" href="#menu2">Transaction <span class="icon-banknote" style="font-size:1.5em"></span></a></li>
-    <li><a data-toggle="tab" href="#menu3">Chart <span class="icon-stats-dots" style="font-size:1.5em"></span></a></li>
+    <li><a data-toggle="tab" href="#menu3">Pay Slip <span class="icon-inbox-document-text" style="font-size:1.5em"></span></a></li>
 	<li><a data-toggle="tab" href="#menu4">Setting <span class="icon-equalizer" style="font-size:1.5em"></span></a></li>
 	<li><a data-toggle="tab" href="#menu7">Manual <span class="icon-question-circle" style="font-size:1.5em"></span></a></li>
   </ul>
@@ -179,7 +184,7 @@ global $wpdb, $wp;
 				</div >
 			</div>
 			
-			<div  class="col-sm-7"  ><!--加班，offset-->
+			<div  class="col-sm-7 hidden"  ><!--加班，offset-->
 				<div class="config-panel">
 					<label><input id="ot" name="ot-filter" type="number" min="0" step="0.01" value="0.00" checked="" style="width: 70px; height: 24px;padding-left:5px;"> OT Fee</label>
 					<label style="width:30px;"> </label>
@@ -190,12 +195,14 @@ global $wpdb, $wp;
 				    <input type="submit" class="btn btn-success btn-sm btn-block hidden" value=" Calculate " style="width:100px;display:inline;"/>
 				</div >
 			</div>
-			
-			<div class="col-sm-2"><!--打印输出-->
-				<div class="config-panel" style="float:right;text-align:right;">
-					<!--button ><a class="no-print" href="javascript:printDiv('jsGrid');">Print</a></button-->
-					<a class="no-print" href="javascript:printDiv('jsGrid');"><button type="button" class="btn btn-primary btn-sm">Print</button></a>
-					<a class="no-print" href="javascript:exportCsv();"><button type="button" class="btn btn-primary btn-sm">.CSV</button></a>
+			 
+			<div class="col-sm-3" style="float:right;text-align:right;"><!--打印输出-->
+				<div class="config-panel" >
+ 
+					<a onclick="printDiv2('jsGrid');"><button type="button" class="btn btn-primary btn-sm">Print</button></a>
+					<!--a class="no-print" href="javascript:window.print();"><button type="button" class="btn btn-primary btn-sm">Print</button></a-->
+					<a id="exportDailyRecordsCSV" class="no-print" onclick="exportCsv()"><button type="button" class="btn btn-primary btn-sm">Export XLS</button></a>
+					<a id="downloadDailyRecordsCSV" class="hidden" href="<?php echo get_site_url(); ?>/wp-content/themes/glow/export/exportData.csv"><button type="button" class="btn btn-success btn-sm">Download XLS</button></a>
 				</div>
 			</div>
 		</div>
@@ -264,11 +271,36 @@ global $wpdb, $wp;
       
     </div>
     <div id="menu3" class="tab-pane fade">
-      <h3>Items</h3>
-      <!--Div that will hold the pie chart-->
-      <div id="chart_div"></div>
-	  <div id="geochart_div" style="width: 500px; height: 500px;"></div>
-	  
+		<form id="payslip_form" action="">
+			<fieldset>
+			<div class="row"><!--filter input part start-->			
+				<div class="col-sm-2">
+					<label for="date">From</label>
+					<input type="date" class="form-control" id="start-date-filter" name="start-date-filter" value="<?php echo strftime(date("Y-m-d", strtotime("7 days ago"))); ?>" min="2016-10-01" max="<?php echo date('Y-m-d'); ?>" required>
+				</div>
+				<div class="col-sm-2">
+					<label for="date">To</label>
+					<input type="date" class="form-control" id="end-date-filter" name="end-date-filter" value="<?php echo date('Y-m-d'); ?>" min="2016-01-01" max="<?php echo date('Y-m-d'); ?>" required>
+				</div>
+				
+				<div class="col-sm-2" style="padding: 26px 0px 0px 0px;">
+					<!--提交filter按钮-->		
+					<button  class="btn btn-success btn-sm btn-block" onclick="return printAllPayslip()" >Generate Payslip</button>			
+				</div>
+				<div class="col-sm-2" style="float:right;text-align:right;"><!--所有人员工资单 打印输出-->
+					<div class="config-panel" >					
+						<a onclick="printDiv2('payslip4all')"><button type="button" class="btn btn-primary btn-sm">Print</button></a>
+						<!--a class="print" rel='payslip4all' onclick="printDiv2()">Print payslip</a-->
+						<!--a class="no-print" href="javascript:exportCsv();"><button type="button" class="btn btn-primary btn-sm">.CSV</button></a-->
+					</div>
+				</div>
+				
+			</div><!--filter input part end-->
+			 
+			</fieldset>
+		</form><!--end of form "#payslip_form" -->
+		<div id="payslip4all" class="PrintArea " style="width:100%">
+		</div>
     </div>
 	
 	
@@ -698,11 +730,12 @@ global $wpdb, $wp;
 	</div> <!-- dialog-form-bonus-threshold end-->
 	
 	
+	<hr/>
 	<a id="IP" href="http://geoiplookup.net/ip/"+"javascript:$("IP").innerHTML();" target="_blank"></a>
 	<!--Print button-->
 	
 	<!--textarea id="printing-css" style="display:none;">html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{font:normal normal .8125em/1.4 Arial,Sans-Serif;background-color:white;color:#333}strong,b{font-weight:bold}cite,em,i{font-style:italic}a{text-decoration:none}a:hover{text-decoration:underline}a img{border:none}abbr,acronym{border-bottom:1px dotted;cursor:help}sup,sub{vertical-align:baseline;position:relative;top:-.4em;font-size:86%}sub{top:.4em}small{font-size:86%}kbd{font-size:80%;border:1px solid #999;padding:2px 5px;border-bottom-width:2px;border-radius:3px}mark{background-color:#ffce00;color:black}p,blockquote,pre,table,figure,hr,form,ol,ul,dl{margin:1.5em 0}hr{height:1px;border:none;background-color:#666}h1,h2,h3,h4,h5,h6{font-weight:bold;line-height:normal;margin:1.5em 0 0}h1{font-size:200%}h2{font-size:180%}h3{font-size:160%}h4{font-size:140%}h5{font-size:120%}h6{font-size:100%}ol,ul,dl{margin-left:3em}ol{list-style:decimal outside}ul{list-style:disc outside}li{margin:.5em 0}dt{font-weight:bold}dd{margin:0 0 .5em 2em}input,button,select,textarea{font:inherit;font-size:100%;line-height:normal;vertical-align:baseline}textarea{display:block;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}pre,code{font-family:"Courier New",Courier,Monospace;color:inherit}pre{white-space:pre;word-wrap:normal;overflow:auto}blockquote{margin-left:2em;margin-right:2em;border-left:4px solid #ccc;padding-left:1em;font-style:italic}table[border="1"] th,table[border="1"] td,table[border="1"] caption{border:1px solid blue;padding:0em 0em;text-align:center;vertical-align:top}th{font-weight:bold}table[border="1"] caption{border:none;font-style:italic}.no-print{display:none} .jsgrid-header-row th{width:20em;text-align:center;margin:auto auto;border:1px solid red;}</textarea-->
-	<textarea id="printing-css" style="display:none;">.no-print{display:none}.jsgrid-header-row th{width:200px;text-align:center;margin:auto auto;border:1px solid red;} </textarea>
+	<textarea id="printing-css" style="display:none;">.no-print{display:none}.jsgrid-header-row th{width:200px;text-align:center;margin:auto auto;border:1px solid red;}.row {margin-right: -15px;margin-left: -15px;}.col-sm-1 {width: 8.33333333%;} </textarea>
     <iframe id="printing-frame" name="print_frame" src="about:blank" style="display:none;"></iframe>
   </div>
 </div>

@@ -627,7 +627,7 @@ $(function () {
 								"turnover" : r.turnover,
 								"sales"    : stl.toFixed(2),							
 								//"threshold" : r.bonus_threshold+";"+r.bonus_threshold_rate,
-								"wage" : "£"+r.wage,
+								"wage" : r.wage,
 								"ot_hours": r.ot_hours,
 								"ot_rate": r.ot_rate,
 								
@@ -993,6 +993,152 @@ function array_filtered(data_copy,filters)
 	return data_filtered;
 }
 
+//生成所有人的工资单
+function printAllPayslip()
+{
+	//alert("所有人的工资单");
+	// 按分店id循环输出
+	// 按employee id 依次按日期顺序输出 到 div #payslip4all
+	// 输出项目包括：branch, department, 上下班时间，service（massage）时间 和 最低保证工作时间，基本工资，turnover，其对应的bonus，product sales, 其对应的comission, 加班小时，加班费.
+	// 每输出完一个人，显示总工资：基本工资 + bonus + comission + 加班费
+	
+	//可利用数据： records_raw 包含所有数据。
+	var records_raw_payslip = records_raw;
+  
+	//首先对 records_raw_payslip 按照 employee id 由小到大顺序排序，因为有跨店的情况。
+	records_raw_payslip.sort(function(a,b){
+		var aEmployee_id = a.employee_id ;
+		var bEmployee_id = b.employee_id; 						
+		return ((aEmployee_id < bEmployee_id) ? -1 : ((aEmployee_id > bEmployee_id) ? 1 : 0)); //按照branch name 由小到大顺序排序	
+	});
+	
+ 
+	var basic_wg=0, bonus = 0,comission = 0, ot_wage=0; //这些变量需要写函数来单独计算 11-07
+	var basic_wg_sum =0, bonus_sum = 0,comission_sum = 0, ot_wage_sum =0, total=0; 
+	var Employee_id = "";
+	var payslipCol='';
+	var payslipRow="", payslipTitle='<div class="row blue">'
+	+ '<div class="col-sm-1">Name & ID</div>'
+	+ '<div class="col-sm-1">Branch & Depart</div>'
+	+ '<div class="col-sm-1">Date</div>'
+	+ '<div class="col-sm-1">Clock-in<br/>Clock-out</div>'
+	+ '<div class="col-sm-1">Service<br/>Hour</div>'
+	+ '<div class="col-sm-1">Basic<br/>Wage</div>'
+	+ '<div class="col-sm-1">Turnover</div>'
+	+ '<div class="col-sm-1">Bonus</div>'
+	+ '<div class="col-sm-1">Product<br/>Sales</div>'
+	+ '<div class="col-sm-1">Comission</div>'
+	+ '<div class="col-sm-1">OT Hour</div>'
+	+ '<div class="col-sm-1">OT Wage</div>'
+	+ '</div><br/>' ;//table header here
+	
+	var payslipRowTotal="";
+	var bgColor="";//set row backgroud color
+	var hr='';
+	
+	$(records_raw_payslip).each(function(index){
+		//对每一行记录
+		if(records_raw_payslip[index].if_paid==='1')
+		{
+			return true; //如果已经付过工资了，则跳过，进行下一条计算。
+		}
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].display_name +" #"+ records_raw_payslip[index].employee_id +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].name +"<br/>"+ records_raw_payslip[index].title +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].date +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].start_time +"<br/>"+ records_raw_payslip[index].end_time +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].wk_hours +'</div>';
+		//payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].min_hrs +'</div>';
+		basic_wg=cal_basic_wage(records_raw_payslip[index]);
+		basic_wg_sum += parseFloat(basic_wg);
+		bonus = cal_bonus(records_raw_payslip[index]);
+		bonus_sum += parseFloat(bonus);
+		comission = cal_comission(records_raw_payslip[index]);
+		comission_sum += parseFloat(comission);
+		ot_wage = cal_ot_wage(records_raw_payslip[index]);
+		ot_wage_sum += parseFloat(ot_wage);
+		payslipCol+='<div class="col-sm-1">'+ basic_wg +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].turnover +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ bonus +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].sales.replace(/,/g,"<br/>") +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ comission +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ records_raw_payslip[index].ot_hours +'</div>';
+		payslipCol+='<div class="col-sm-1">'+ ot_wage +'</div>';
+		
+		//是否安装header
+		if(index===0 || records_raw_payslip[index].employee_id !== records_raw_payslip[index-1].employee_id){
+			payslipRow += payslipTitle ;
+		}
+		
+		//set row backgroud color
+		if(index % 2 === 0)
+		{
+			
+			bgColor="";
+		}
+		else{
+			bgColor="";
+		}
+		
+		//if append <hr/> to the end of every employee 
+		if(index===$(records_raw_payslip).length-1)
+		{
+			hr='<hr/>';
+			total= basic_wg_sum+bonus_sum+comission_sum+ot_wage_sum;
+			payslipRowTotal='<div class="row red">'
+				+ '<div class="col-sm-1">'+ " " +'</div>'
+				+ '<div class="col-sm-1">'+ " " +'</div>'				
+				+ '<div class="col-sm-1">'+ "Total Wage :" +'</div>'
+				+ '<div class="col-sm-1" style="font-size:1.1em;font-weight: bold;">£'+ total.toFixed(2) +'</div>'
+				+ '<div class="col-sm-1">'+ "=" +'</div>'
+				+ '<div class="col-sm-1">£'+ basic_wg_sum.toFixed(2) +'</div>'
+				+ '<div class="col-sm-1">'+ "+" +'</div>'
+				+ '<div class="col-sm-1">£'+ bonus_sum.toFixed(2)  +'</div>'
+				+ '<div class="col-sm-1">'+ "+" +'</div>'
+				+ '<div class="col-sm-1">£'+ comission_sum.toFixed(2)  +'</div>'
+				+ '<div class="col-sm-1">'+ "+" +'</div>'
+				+ '<div class="col-sm-1">£'+ ot_wage_sum.toFixed(2) +'</div>'
+				+ '</div>' ; //total basic wage, bonus, comission, ot wage, here
+		}
+		else if(records_raw_payslip[index].employee_id!==records_raw_payslip[index+1].employee_id)
+		{
+			hr='<hr/>';
+			total= basic_wg_sum+bonus_sum+comission_sum+ot_wage_sum;
+			payslipRowTotal='<div class="row red">'
+				+ '<div class="col-sm-1">'+ " " +'</div>'
+				+ '<div class="col-sm-1">'+ " " +'</div>'				
+				+ '<div class="col-sm-1">'+ "Total Wage :" +'</div>'
+				+ '<div class="col-sm-1" style="font-size:1.1em;font-weight: bold;">£'+ total.toFixed(2) +'</div>'
+				+ '<div class="col-sm-1">'+ "=" +'</div>'
+				+ '<div class="col-sm-1">£'+ basic_wg_sum.toFixed(2) +'</div>'
+				+ '<div class="col-sm-1">'+ "+" +'</div>'
+				+ '<div class="col-sm-1">£'+ bonus_sum.toFixed(2)  +'</div>'
+				+ '<div class="col-sm-1">'+ "+" +'</div>'
+				+ '<div class="col-sm-1">£'+ comission_sum.toFixed(2)  +'</div>'
+				+ '<div class="col-sm-1">'+ "+" +'</div>'
+				+ '<div class="col-sm-1">£'+ ot_wage_sum.toFixed(2) +'</div>'
+				+ '</div>' ; //total basic wage, bonus, comission, ot wage, here
+				
+				basic_wg_sum =0;
+				bonus_sum = 0;
+				comission_sum = 0;
+				ot_wage_sum =0;
+		}
+		else{
+			hr='<br/>'; //同一个人的不同时间记录换行即可不用分割线
+		}
+		payslipRow +='<div class="row '+ bgColor +'">'+ payslipCol +'</div>'+ payslipRowTotal +hr; //组装成1行。
+		
+		payslipCol='';
+		payslipRowTotal='';
+		
+		
+		
+	});//对每一行记录
+	
+	$("#payslip4all").append(payslipRow);
+	return false;//避免提交数据库，导致页面又不必要的刷新一次。
+}
+
 //filter dailyrecords for Boss eric  
 function filterRecords()
 {
@@ -1230,7 +1376,7 @@ function get_sales_rate()
 	//var whereclause=" where product_id= "+id +" and effective_date <= '2016-10-22'";
 	//querysql = querysql + whereclause;
 	//querysql = "SELECT effective_date, sales_rate FROM wp_shop_product_rate WHERE product_id= "+id;
-	console.log(querysql);
+	//console.log(querysql);
 	var rate=0;
 	 
 	$.ajax({
@@ -1265,11 +1411,183 @@ function get_sales_rate()
 		rate= 0;
 		
 	});
-
 	 
 }
 
-//show breakdown in breakdown area: #wage_breakdown
+
+//单独计算基本工资 
+//records_raw_payslip_row 是单独一行记录
+function cal_basic_wage(records_raw_payslip_row)
+{
+	//基本工资变量
+	var basic_wage =0, hours=0;
+	
+	if(records_raw_payslip_row.pay_type==="daily")
+	{					 
+		basic_wage = parseFloat(records_raw_payslip_row.pay_rate); // payRate x 1 等于没乘，所以直接赋值
+		 
+	}
+	else if(records_raw_payslip_row.pay_type==="hourly")//小时工的情况比较复杂：有可能即做小时工，又做massage
+	{
+					var hours=cal_hrs(records_raw_payslip_row.start_time, records_raw_payslip_row.end_time);//计算上班小时数
+					
+					//如果service hours > 0, 则认为此员工从事massage。
+					//计算基本工资时，要计算2部分。
+					if(parseFloat(records_raw_payslip_row.wk_hours) > 0)//公式3的计算.这里用wk_hours(service hour)>0来区分是否做了massage. 如果>0,则做了。否则没有做。
+					{
+						//did a massage job
+						//console.log("最低保证时间== "+records_filtered[i].min_hrs);//专指做massage
+						var x = parseFloat(records_raw_payslip_row.min_hrs);//许诺最少的按摩时间
+						var y = parseFloat(records_raw_payslip_row.wk_hours);//实际的按摩时间=service hour
+						
+						if(y<x)
+						{//实际工作时间 < 最低保证时间
+							//console.log("最低保证时间： "+x);
+							basic_wage = x * records_raw_payslip_row.pay_rate;
+						}
+						else{//实际工作时间 >= 最低保证时间
+							basic_wage = y * records_raw_payslip_row.pay_rate;
+						}
+						//这里还要再剥去massage时间，计算出按小时工计算的工资。
+						if(hours > parseFloat(records_raw_payslip_row.wk_hours)) //如果上班时间大于massage时间
+						{
+							//按小时工 计算的工资
+							basic_wage += (hours-parseFloat(records_raw_payslip_row.wk_hours)) * parseFloat(records_raw_payslip_row.pay_rate);
+							
+						} 
+						
+					}
+					else{
+						//如果不做massage，即一般小时工，则简单：hourly rate x hours
+						basic_wage = parseFloat( records_raw_payslip_row.pay_rate) * hours;
+						
+					}
+	}
+	//如果是 pay-type 是 massage 的员工
+	else if(records_raw_payslip_row.pay_type==="massage")
+	{
+					 
+					//如果service hours（wk_hours） > 0, 则认为此员工从事massage。					
+					if(parseFloat(records_raw_payslip_row.wk_hours) >= 0)//公式3的计算.
+					{
+						//did a massage job
+						//console.log("最低保证时间== "+records_raw_payslip_row.min_hrs);//专指做massage
+						x = parseFloat(records_raw_payslip_row.min_hrs);//许诺最少的按摩时间
+						y = parseFloat(records_raw_payslip_row.wk_hours);//实际的按摩时间=service hour
+						
+						if(y<x)
+						{//实际工作时间 < 最低保证时间
+						
+							basic_wage = x * parseFloat(records_raw_payslip_row.pay_rate);
+						}
+						else{//实际工作时间 >= 最低保证时间
+							basic_wage = y * parseFloat(records_raw_payslip_row.pay_rate);
+						}
+						
+					}
+					else{						 
+						console.log("massage员工的wk_hours小于0.");						
+					}
+	}
+	return basic_wage.toFixed(2);
+}
+
+//单独计算 Bonus , 依据是每个人每天的创收 turnover. 
+//records_raw_payslip_row 是单独一行记录
+function cal_bonus(records_raw_payslip_row)
+{
+	var bonus=0;
+	var bonus_sum=0;
+	
+	var bonus_band=bonus_rec.sort(function(a,b){
+			var aDate = a.effective_date ;
+			var bDate = b.effective_date; 						
+			return ((aDate < bDate) ? 1 : ((aDate > bDate) ? -1 : 0)); //时间逆序排序	
+		});	
+	//get bonus table 最好是全局变量
+	console.log("bonus_rec记录：");
+	console.log(bonus_rec);
+	
+	//计算bonus		
+	//对每一个记录进行下面计算	
+	var turnover= parseFloat(records_raw_payslip_row.turnover) ;
+			
+	$.each(bonus_band,function(index, item)//bonus_band已经是按时间逆序排列了。但是没有去掉和employee id 不符合的记录
+	{
+				if(item.usrid !== records_raw_payslip_row.employee_id 
+					|| ( item.branch_id !== records_raw_payslip_row.name ) 
+					|| (item.depart_id !== records_raw_payslip_row.title))
+				{//去掉ID不符合的记录
+					return true;
+				}
+				if(records_raw_payslip_row.date >= item.effective_date )//如果 records 日期 > threshold 日期
+				{//则就用当前日期对应的threshold
+					if(turnover > parseFloat(item.bonus_threshold))
+					{
+						bonus = (turnover- parseFloat(item.bonus_threshold)) * parseFloat(item.bonus_threshold_rate);
+						 
+						return false; //jump out each loop. //return false; skip to next iteration in jQuery.each() 
+					}
+					
+				}
+				else //移到下一个threshold的日期，进行比较。
+				{
+					console.log("不参与计算： turnover , item.bonus_threshold:");
+					console.log(turnover+","+item.bonus_threshold);
+				}
+				 
+	});	
+	return bonus.toFixed(2);
+}
+
+////单独计算 Comission  
+//records_raw_payslip_row 是单独一行记录
+function cal_comission(records_raw_payslip_row)
+{
+	var comission=0;
+	
+	//提成计算(i.e,: commision rate / product sales rate)
+
+	var sales_array=records_raw_payslip_row.sales.split(',');
+	var rate=0;
+				for(j=0;j<sales_array.length;j++)
+				{
+					if(parseFloat(sales_array[j])>0  ) //只显示sales大于0的
+					{
+						
+						//sales_rate是全局变量，已经按时间逆序排序。存放sales rate 表的数据。
+						$(sales_rate).each(function (index){
+							//console.log("product id: "+sales_rate[index].product_id + " , rate: "+ sales_rate[index].sales_rate + " , sales_rate[index].effective_date: "+sales_rate[index].effective_date);
+							//j 标定着产品顺序，product id 从2开始编号。所以加2
+							//这里有个弱点，如果产品id出现跳号，那么有问题。
+							if((sales_rate[index].product_id==(j+2)) && (records_raw_payslip_row.date >= sales_rate[index].effective_date))
+							{
+								rate= sales_rate[index].sales_rate;
+								 
+								return false;
+							}
+						});
+					 
+						comission += parseFloat(rate) * parseFloat(sales_array[j]);	
+					}
+							
+				}
+	
+	return comission.toFixed(2);
+}
+
+//单独计算 OT Wage 加班费  
+//records_raw_payslip_row 是单独一行记录
+function cal_ot_wage(records_raw_payslip_row)
+{
+	var ot_wage=0;
+	
+	ot_wage = parseFloat(records_raw_payslip_row.ot_rate) * parseFloat(records_raw_payslip_row.ot_hours);
+	
+	return ot_wage.toFixed(2);
+}
+
+//show breakdown in breakdown area 核心函数
 function show_breakdown()
 {
 	$("#basic_wage_pannel").attr({class: "panel panel-primary"});//show wage pannel
@@ -1381,8 +1699,7 @@ function show_breakdown()
 		console.log("get bounus threshold fail from db.");
 		console.log( response );
 	});
-	//return d.promise();
-	
+	 
 	
 	//提成计算变量
 	var commission_sum=0;
@@ -1398,8 +1715,7 @@ function show_breakdown()
 			if(records_filtered[i].if_paid==='No') //注意如果paid==Yes，是没有后面计算的
 			{
 				//1.基本工资计算
-				// 这里需要判断下有没有pay rate 的修改记录。
-				// 如果有，用最新的pay rate 计算。如果没有，用一开始设置的payrate,即 records_filtered[i].pay_rate
+				// 
 				var payRate = records_filtered[i].pay_rate;
 				if(records_filtered[i].pay_type==="daily")
 				{					 
@@ -1444,7 +1760,7 @@ function show_breakdown()
 					
 					//如果service hours > 0, 则认为此员工从事massage。
 					//计算基本工资时，要计算2部分。
-					if(records_filtered[i].wk_hours > 0)//公式3的计算.这里用wk_hours(service hour)>0来区分是否做了massage. 如果>0,则做了。否则没有做。
+					if(parseFloat(records_filtered[i].wk_hours) > 0)//公式3的计算.这里用wk_hours(service hour)>0来区分是否做了massage. 如果>0,则做了。否则没有做。
 					{
 						//did a massage job
 						console.log("最低保证时间== "+records_filtered[i].min_hrs);//专指做massage
@@ -1454,17 +1770,17 @@ function show_breakdown()
 						if(y<x)
 						{//实际工作时间 < 最低保证时间
 							//console.log("最低保证时间： "+x);
-							wage1_sum += x * records_filtered[i].pay_rate;
+							wage1_sum += x * parseFloat(records_filtered[i].pay_rate);
 							basic_wage_breakdown += "£"+ records_filtered[i].pay_rate + " x " + records_filtered[i].min_hrs +"(min hours)" +" + ";//为了显示用，不参与计算
 						}
 						else{//实际工作时间 >= 最低保证时间
-							wage1_sum += y * records_filtered[i].pay_rate;
+							wage1_sum += y * parseFloat(records_filtered[i].pay_rate);
 							basic_wage_breakdown += "£"+ records_filtered[i].pay_rate + " x " + records_filtered[i].wk_hours +"(h)" +" + ";//为了显示用，不参与计算
 						}
-						//这里还要再剥去massage时间，计算出按小时工计算的工资。
+						//这里上班总时间还要再剥去massage时间，计算出按小时工计算的工资。
 						if(hours > parseFloat(records_filtered[i].wk_hours)) //如果上班时间大于massage时间
 						{
-							wage1_sum += (hours-parseFloat(records_filtered[i].wk_hours)) * records_filtered[i].pay_rate;
+							wage1_sum += (hours - parseFloat(records_filtered[i].wk_hours)) * parseFloat(records_filtered[i].pay_rate);
 							basic_wage_breakdown += "£"+ records_filtered[i].pay_rate + " x " +"["+ hours +" - "+ records_filtered[i].wk_hours +"(massage hrs)]" +" + ";//为了显示用，不参与计算
 						
 						} 
@@ -1484,7 +1800,7 @@ function show_breakdown()
 					console.log("工种： "+records_filtered[i].title);
 					
 					//如果service hours（wk_hours） > 0, 则认为此员工从事massage。					
-					if(records_filtered[i].wk_hours >= 0)//公式3的计算.
+					if(parseFloat(records_filtered[i].wk_hours) >= 0)//公式3的计算.
 					{
 						//did a massage job
 						console.log("最低保证时间== "+records_filtered[i].min_hrs);//专指做massage
@@ -1494,11 +1810,11 @@ function show_breakdown()
 						if(y<x)
 						{//实际工作时间 < 最低保证时间
 							//console.log("最低保证时间： "+x);
-							wage1_sum += x * records_filtered[i].pay_rate;
+							wage1_sum += x * parseFloat(records_filtered[i].pay_rate);
 							basic_wage_breakdown += "£"+ records_filtered[i].pay_rate + " x " + records_filtered[i].min_hrs +"(min hours)" +" + ";//为了显示用，不参与计算
 						}
 						else{//实际工作时间 >= 最低保证时间
-							wage1_sum += y * records_filtered[i].pay_rate;
+							wage1_sum += y * parseFloat(records_filtered[i].pay_rate);
 							basic_wage_breakdown += "£"+ records_filtered[i].pay_rate + " x " + records_filtered[i].wk_hours +"(h)" +" + ";//为了显示用，不参与计算
 						}
 						
@@ -1525,10 +1841,6 @@ function show_breakdown()
 					}
 					
 				});
-
-				
-				//console.log("product sales 数组: ");
-				//console.log(sales_array);
 				
 				var rate=0;
 				for(j=0;j<sales_array.length;j++)
@@ -1709,7 +2021,7 @@ function cal_hours_wage()
 }
 
 ////计算提成
-function  cal_bonus(){
+/* function  cal_bonus(){
 	//var w2=0.0;
 	if($("#sales").val()==0 || $("#sales").val()=="")
 	{	
@@ -1720,7 +2032,7 @@ function  cal_bonus(){
 	$("#bonus_val").text(w2);
 	console.log("w2:"+w2);
 	return w2;
-}
+} */
 
 // html 调用
 function cal_wkhrs_wage()
@@ -1748,6 +2060,17 @@ function printDiv(elementId) {
     window.frames["print_frame"].window.focus();
     window.frames["print_frame"].window.print();
 }
+/* 打印jsgrid表格按钮
+*
+*/
+function printDiv2(id) {
+		
+	$("#"+id).printArea();
+	 
+	
+}
+
+
 
 /* 输出jsgrid数据为CSV格式文件
 *
@@ -1768,13 +2091,16 @@ function exportCsv()
 		"pay_rate" : "Pay Rate",
 		"pay_type" : "Pay Type",
 		"turnover" : "Turnover",
-		"sales"    : "Sales",
+		"sales"    : "Product Sales",
 		"wage" : "Wage" ,
+		"ot_hours" : "OT Hours" ,
+		"ot_rate" : "OT Rate" ,
 		"if_paid": "Paid" //show yes or no later in js script below	
 	};
 	var rec=records;
 	rec.unshift(title);//插入标题title
-	console.log(records);
+	console.log("exportCsv data: ");
+	console.log(rec);
 	$.ajax({
 		type: "POST",
 		url: phpUrl+"export2CSV.php",
@@ -1782,7 +2108,11 @@ function exportCsv()
 	})
 	.done( function(){
 		alert("Export to CSV.");
-
+	 
+	    //$(this).attr('href','<?php echo get_site_url(); ?>/wp-content/themes/glow/export/exportData.csv').attr('target','_blank');
+		//window.open('../export/exportData.csv');
+		$("#exportDailyRecordsCSV").attr('class',"hidden");
+		$("#downloadDailyRecordsCSV").attr('class',"");
 	})
 	.fail(function(){
 		alert("Can't export to CSV. Please try later.");
@@ -1849,6 +2179,7 @@ function saveBranchManager()
 }
 
 var pay_rec = []; //记录今后修改的 pay rate
+var bonus_rec = [];   //存放bonus threshold , threshold rate 
 
 $().ready(function () {
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -1875,13 +2206,13 @@ $().ready(function () {
 
 	/***********************************************************Tab2 grid*****************************************/
 	//phpurl = phpUrl+"dailyCashflow.php"; // read wp_shop_cashflow table.
-	var records = [];
+	var records_trans = [];
 	$("#jsGridTransaction").jsGrid({
 		height : "auto",
 		width : "100%",
 
 		//filtering: true,
-		sorting : false,
+		sorting : true,
 		//editing: true,
 		//inserting: false,
 		/**/
@@ -1889,7 +2220,7 @@ $().ready(function () {
 		pagerContainer : "#externalPager2",
 		paging : true,
 		//pageLoading: true,
-		pageSize : 10,
+		pageSize : 5,
 		pageIndex : 1,
 		pageButtonCount : 5,
 		/**/
@@ -1901,35 +2232,76 @@ $().ready(function () {
 		},
 
 		deleteConfirm : function (item) {
-			return "The order, \"" + item.Name + "\" from " + item.Postcode + ", will be DELETED. Are you sure?";
+			 
+			var msg="The entry ID: \n" +"#"+ item.id + ", " + item.date + "," + item.shop_name + ", " + item.title + ", " + item.display_name +  "\n"
+			+ "will be DELETED. \n Are you sure?";
+			var deleteFlag=0;
+			var tb="wp_shop_cashflow";
+			var answer=confirm(msg);
+			if (answer==true)
+			{
+				//php delete a row in table in db				
+				$.ajax({
+					type: "POST",
+					url: phpUrl+"deleteData.php",  
+					data: {
+						id: item.id,
+						table: tb
+					}
+					//dataType: "json" //如果没有返回值，就不要写datatype
+				})
+				.done(function(data) {	
+					deleteFlag=1;//表明已删除	
+					
+					console.log("delete done!");
+					return ("The entry has been Deleted.");
+				})
+				.fail(function(xhr, status, error)
+				{
+					
+					console.log("cannot delete  in db");												 
+					console.log(xhr.responseText);
+					console.log(status);
+					console.log(error);
+				});	
+			    
+				 
+			}
+			else
+			{
+				location.reload(false);//刷新页面
+				return ("Canceled. Nothing happened.") ;
+			}			
 		},
-		onItemInserted : function (args) {
-			//$("#jsGrid").jsGrid("refresh");
-
-			$("#jsGrid").jsGrid("reset");
-			//alert("refrsh!");
-		},
-
+		 
 		//db below here----------------------------
 		controller : {
 			loadData : function () {
 				var d = $.Deferred();
 				 
-                var u=$(location).attr('href'); 
-				var id=u.substring(u.length-2,u.length-1);// get shop id from url
+                //var u=$(location).attr('href'); 
+				//var id=u.substring(u.length-2,u.length-1);// get shop id from url.局限：编号只能是个位数
 				
 				$.ajax({
-					url : phpUrl+"dailyCashflowBoss.php", // read wp_shop_cashflow table for boss, can see all entries.
+					//data: {"shop_id":"all"},
+					url : phpUrl+"dailyCashflowBoss.php", // read wp_shop_cashflow table.
 					dataType : "json"
 				})
 				.done(function (response) {
+					response.sort(function(a,b){
+						var aId = a.id ;
+						var bId = b.id; 						
+						return ((aId < bId) ? -1 : ((aId > bId) ? 1 : 0)); //按 entry ID 逆序排序。这样显示出来是降序的。和我下面算法有关： r = response[--i];
+									
+					});
 					console.log(response);
 					var i = response.length;
 					console.log("object length: "+i);
 					$(response).each(function () {
 						var r = response[--i]; //one entry//
-						console.log("r: "+r);
+						//console.log("r: "+r);
 						var row = {
+							"id": r.id,
 							"date" : r.date,
 							"shop": r.shop_name,							
 							"cash" : r.cash,
@@ -1937,12 +2309,21 @@ $().ready(function () {
 							"online" : r.online,
 							"prepaid" : r.prepaid,
 							"refund" : r.refund,
-							"total" : r.total							 
+							"total" : r.total,
+								
+							"tillstart" : r.till_start,
+							"tillend" : r.till_end,
+							"expense" : r.expense,
+							"wage" : r.wage,
+							"cashoffset" : r.cash_offset,
+							"cashin" : r.cash_in
 							};
 							
-						records.push(row); 
+						records_trans.push(row); 
 					});
-					d.resolve(records);					
+					console.log("records_trans: ");
+					console.log(records_trans);
+					d.resolve(records_trans);					
 				})
 				.fail(function(){
 					console.log("jsGrid cashflow load data fail.");
@@ -1953,8 +2334,18 @@ $().ready(function () {
 		//db above ----------------------------
 
 		fields : [
+			/* {
+				name : "id", // 对应数组row中的index
+				title : "Entry ID",
+				type : "text",
+				align : "center",
+				filtering : false,
+			 
+				width : "auto"
+				
+			},  */
 			{
-				name : "date",
+				name : "date", // 对应数组row中的index
 				title : "Date",
 				type : "text",
 				align : "center",
@@ -1963,36 +2354,44 @@ $().ready(function () {
 				
 			}, 
 			{
-				name : "shop", // 对应数组row中的index
-				title : "Shop",
+				name : "total", 
+				title : "TOTAL",
 				type : "text",
 				align : "center",
+				css: "red",
 				filtering : false,
+				sorting : false,
 				width : "auto"
 				
-			}, 
-			{
-				name : "cash",
-				title : "Cash",
-				type : "text",
-				align : "center",
-				filtering : false,
-				width : "auto"
 			},
 			{
 				name : "card", //name对应数据库中字段
 				title: "Card",
 				type : "text",
 				align : "center",
+				css: "blue",
 				autosearch : true,
+				sorting : false,
 				width : "auto"
-			}, 
+			},			
+			{
+				name : "cash",
+				title : "Cash",
+				type : "text",
+				align : "center",
+				filtering : false,
+				sorting : false,
+				css: "blue",
+				width : "auto"
+			},			 
 			{
 				name : "online",
 				title: "Online",
 				type : "text",
 				align : "center",
 				autosearch : true,
+				sorting : false,
+				css: "blue",
 				width : "auto"
 			},			
 			{
@@ -2000,7 +2399,9 @@ $().ready(function () {
 				title: "Prepaid",
 				type : "text",
 				align : "center",
+				css: "blue",
 				autosearch : true,
+				sorting : false,
 				width : "auto"
 			}, 
 			{
@@ -2009,27 +2410,81 @@ $().ready(function () {
 				type : "text",
 				align : "center",
 				autosearch : true,
+				sorting : false,
+				css: "blue",
 				width : "auto"
 			}, 
 			{
-				name : "total",
-				title: "Total",
+				name : "tillstart",
+				title: "Till Start",
 				type : "text",
 				align : "center",
 				autosearch : true,
+				sorting : false,
+				css: "yellow",
 				width : "auto"
 			},
 			{
+				name : "tillend",
+				title: "Till End",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : false,
+				css: "yellow",
+				width : "auto"
+			},
+			{
+				name : "expense",
+				title: "Expense",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : false,
+				css: "yellow",
+				width : "auto"
+			},
+			{
+				name : "wage",
+				title: "WAGE",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : false,
+				css: "yellow",
+				width : "auto"
+			},
+			{
+				name : "cashoffset",
+				title: "Cash Offset",
+				type : "text",
+				align : "center",
+				autosearch : true,
+				sorting : false,
+				css: "yellow",
+				width : "auto"
+			},
+			{
+				name : "cashin",
+				title: "CASH-IN",
+				type : "text",
+				align : "center",
+				css: "red",
+				autosearch : true,
+				sorting : false,
+				width : "auto"
+			},
+			
+			{
 				type : "control",
-				editButton : true,
+				editButton : false,
 				//deleteButton : true,//为了展示，先暂时关闭
-				deleteButton : false,//为了展示，先暂时关闭
+				deleteButton : true,//为了展示，先暂时关闭
 				clearFilterButton : false,
 				modeSwitchButton : false,
-
+				/*
 				headerTemplate : function () {
-					//return $("<button>").attr("type", "button").attr("class","btn-css plus").text("+")
-					//$('#jsGridTransaction').jsGrid('refresh');
+					 
 					return $("<span/>").attr("class", "icon-plus") //tab2
 					.css({
 						'font-size' : "1em",
@@ -2050,13 +2505,14 @@ $().ready(function () {
 						$("#dialog-form-cashflow").dialog().dialog("open");
 						showDetailsDialog("Add", {});
 					});
-				}
+				}*/
 			}
 				
 
 		]
 
 	});
+	
 	
 	$(".config-panel input[type=checkbox]").on("click", function() {
         var $cb = $(this);
@@ -2541,7 +2997,7 @@ $().ready(function () {
 	
 	
 	/**************************************************** Tab4 Settings Bonus **********************************************************/
-	var bonus_rec = [];   //存放bonus threshold , threshold rate 
+	
 	$("#jsGrid_bonus_threshold").jsGrid({
 		height : "auto",
 		width : "100%",
@@ -2660,7 +3116,7 @@ $().ready(function () {
 							"usrid": r.usrid
 						};
 						 
-						bonus_rec.push(row); 
+						bonus_rec.push(row); //存放bonus threshold , threshold rate 
 					});
 					bonus_rec.sort(function(a,b){
 						var aId = a.id ;

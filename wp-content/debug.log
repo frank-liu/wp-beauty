@@ -63,3 +63,9 @@
 [04-Nov-2016 18:56:52 UTC] WordPress database error Unknown column 'min_hrs' in 'field list' for query 
 				UPDATE wp_shop_daily_records 
 				SET pay_rate =90.00 , min_hrs =0.00 , ot_rate =8.50 WHERE shop_id =1	AND team_id=2	AND employee_id=5	AND pay_type ='daily'	AND date >= '2016-10-20'
+[05-Nov-2016 16:39:47 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in D:\xampp\htdocs\wp-beauty\wp-includes\update.php on line 479
+[05-Nov-2016 16:40:00 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\wp-beauty\wp-includes\Requests\Transport\cURL.php on line 436
+[05-Nov-2016 17:30:03 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in D:\xampp\htdocs\wp-beauty\wp-includes\Requests\Transport\cURL.php on line 436
+[07-Nov-2016 19:11:12 UTC] PHP Notice:  js_escape is <strong>deprecated</strong> since version 2.8.0! Use esc_js() instead. in D:\xampp\htdocs\wp-beauty\wp-includes\functions.php on line 3707
+[07-Nov-2016 19:11:40 UTC] PHP Notice:  js_escape is <strong>deprecated</strong> since version 2.8.0! Use esc_js() instead. in D:\xampp\htdocs\wp-beauty\wp-includes\functions.php on line 3707
+[07-Nov-2016 19:14:47 UTC] PHP Parse error:  syntax error, unexpected ',' in D:\xampp\htdocs\wp-beauty\wp-content\themes\glow\BossTemplate.php on line 199

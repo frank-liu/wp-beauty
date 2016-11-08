@@ -96,23 +96,7 @@ function dailyRecordsValidation()
 	}else{;
 		//cal_hours_wage(); //计算工时工资
 	}
-	
-	/*
-	if($("#sales").val()>0 && $("#sold").val()<=0)
-	{
-			$("#sold").css("border", "2px solid red");
-			alert("请选择售出的商品。");
-			return false;
-	}
-	else if ($("#sales").val()<0)//售价小于0，不合理退出检查。
-	{
-		return false;
-	}
-	else{
-		//all validate
-		$("#sold").css("border", "1px solid grey");
-		return true;
-	}*/
+	 
 	return true;	
 	
 }
@@ -427,9 +411,7 @@ $(function () {
 		grid.option("data").splice(deletedItemIndex, 1);
 		grid.refresh();
 	};
-
-	 	
-	
+ 	
 	$("#jsGrid").jsGrid({
 		height : "auto",
 		width : "100%",
@@ -1480,7 +1462,7 @@ $().ready(function () {
 				var d = $.Deferred();
 				 
                 var u=$(location).attr('href'); 
-				var id=u.substring(u.length-2,u.length-1);// get shop id from url
+				var id=u.substring(u.length-2,u.length-1);// get shop id from url.局限：编号只能是个位数
 				
 				$.ajax({
 					data: {"shop_id":id},
